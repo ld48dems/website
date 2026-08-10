@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who we are | 48th Legislative District Democrats</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta property="og:title" content="Who we are | 48th Legislative District Democrats"/>
+<meta property="og:description" content="Our mission, what a legislative district organization does, our board, elected officials, and precinct committee officers."/>
+<meta property="og:image" content="assets/ld48-emblem.png"/>
+<meta property="og:type" content="website"/>
+<style>*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:#fff}a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px}</style>
+</helmet>
+<div style="font-family:'Libre Franklin',system-ui,sans-serif;color:#102a43;background:#fff">
+
+  <dc-import name="nav" current="who" hint-size="100%,74px"></dc-import>
+
+  <section id="main-content" style="background:#011D3E;color:#fff;padding:clamp(48px,7vw,84px) 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;font-weight:700;color:#63A434;margin:0 0 14px">Who we are</p>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.5vw,60px);line-height:1.04;letter-spacing:-1px;margin:0 0 22px">Neighbors building Democratic power on the Eastside.</h1>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.6;color:#C7DDF0;margin:0;max-width:680px">We are the grassroots Democratic organization for the 48th Legislative District, covering Bellevue, Kirkland, Redmond, and the surrounding Eastside.</p>
+    </div>
+  </section>
+
+  <!-- ANCHOR NAV -->
+  <div style="position:sticky;top:74px;z-index:50;background:#fff;border-bottom:1px solid #e2ecf5">
+    <div style="max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;gap:10px">
+      <a href="#mission" style="display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:#E1EFF8;color:#0267BD;font-weight:600;font-size:14.5px;text-decoration:none" style-hover="background:#0267BD;color:#fff">Mission and values</a>
+      <a href="#what" style="display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:#E1EFF8;color:#0267BD;font-weight:600;font-size:14.5px;text-decoration:none" style-hover="background:#0267BD;color:#fff">What the LD does</a>
+      <a href="#board" style="display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:#E1EFF8;color:#0267BD;font-weight:600;font-size:14.5px;text-decoration:none" style-hover="background:#0267BD;color:#fff">Executive board</a>
+      <a href="#officials" style="display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:#E1EFF8;color:#0267BD;font-weight:600;font-size:14.5px;text-decoration:none" style-hover="background:#0267BD;color:#fff">Elected officials</a>
+      <a href="#pcos" style="display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:#E1EFF8;color:#0267BD;font-weight:600;font-size:14.5px;text-decoration:none" style-hover="background:#0267BD;color:#fff">PCOs</a>
+    </div>
+  </div>
+
+  <!-- MISSION -->
+  <section id="mission" style="background:#fff;padding:clamp(52px,7vw,88px) 24px;scroll-margin-top:130px">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(36px,5vw,56px);align-items:start">
+      <div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 18px;color:#011D3E">Our mission</h2>
+        <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0 0 16px">We organize neighbors to elect Democrats, advance progressive values, and make local government work for everyone on the Eastside. We meet every month, welcome newcomers, and turn shared values into wins at the ballot box.</p>
+        <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0">Everything we do is powered by volunteers who live right here in the 48th.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+          <div style="background:#E1EFF8;border-radius:12px;padding:18px 20px;border:1px solid #cfe2f3">
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;margin:0 0 5px;color:#011D3E">{{ v.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.5;color:#3a546e">{{ v.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="what" style="background:#E1EFF8;padding:clamp(52px,7vw,88px) 24px;scroll-margin-top:130px">
+    <div style="max-width:1100px;margin:0 auto">
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 12px;color:#011D3E">What a legislative district organization does</h2>
+      <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0 0 36px;max-width:680px">Washington Democrats are organized by legislative district. As the team for the 48th, here is the hands-on work we do.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px">
+        <sc-for list="{{ activities }}" as="a" hint-placeholder-count="5">
+          <div style="background:#fff;border-radius:14px;padding:24px 22px;border:1px solid #cfe2f3">
+            <div style="width:44px;height:44px;border-radius:11px;background:#011D3E;color:#0BA5E9;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;margin-bottom:16px">{{ a.n }}</div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;margin:0 0 8px;color:#011D3E">{{ a.title }}</h3>
+            <p style="font-size:14.5px;line-height:1.55;color:#3a546e;margin:0">{{ a.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOARD -->
+  <section id="board" style="background:#fff;padding:clamp(52px,7vw,88px) 24px;scroll-margin-top:130px">
+    <div style="max-width:1100px;margin:0 auto">
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 12px;color:#011D3E">Executive board</h2>
+      <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0 0 36px;max-width:680px">A team of volunteers elected by the membership keeps the district party running.</p>
+      <p style="font-size:15px;line-height:1.6;color:#3a546e;margin:-24px 0 32px">To reach a board member, use our <a href="contact.dc.html" style="font-weight:700;color:#0267BD">contact form</a> and include their role in the subject.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px">
+        <sc-for list="{{ board }}" as="m" hint-placeholder-count="6">
+          <div style="border:1px solid #d8e6f2;border-radius:14px;padding:22px 22px 24px;background:#fff">
+            <div style="font-size:13px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:#0267BD;margin-bottom:6px">{{ m.role }}</div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;margin:0 0 8px;color:#011D3E">{{ m.name }}</h3>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;color:#3a546e">{{ m.pronouns }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELECTED OFFICIALS -->
+  <section id="officials" style="background:#E1EFF8;padding:clamp(52px,7vw,88px) 24px;scroll-margin-top:130px">
+    <div style="max-width:1100px;margin:0 auto">
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 12px;color:#011D3E">Elected officials</h2>
+      <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0 0 36px;max-width:680px">The Democrats representing the 48th District in Olympia and Washington, D.C.</p>
+      <div style="display:flex;flex-direction:column;gap:32px">
+        <sc-for list="{{ officialGroups }}" as="g" hint-placeholder-count="2">
+          <div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;margin:0 0 16px;color:#0267BD;letter-spacing:0.3px">{{ g.title }}</h3>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
+              <sc-for list="{{ g.people }}" as="p" hint-placeholder-count="3">
+                <div style="background:#fff;border:1px solid #cfe2f3;border-radius:14px;padding:20px;display:flex;gap:16px;align-items:center">
+                  <img data-official-photo="{{ p.photo }}" alt="Portrait of {{ p.name }}" style="width:56px;height:56px;border-radius:50%;flex-shrink:0;object-fit:cover;object-position:center top"/>
+                  <div>
+                    <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;color:#011D3E">{{ p.name }}</div>
+                    <div style="font-size:14px;color:#3a546e;margin-top:3px">{{ p.office }}</div>
+                    <div style="display:flex;gap:12px;margin-top:7px;font-size:13.5px"><a href="{{ p.website }}" target="_blank" rel="noopener" style="font-weight:700;color:#0267BD">Website</a><a href="{{ p.contact }}" target="_blank" rel="noopener" style="font-weight:700;color:#0267BD">Contact</a></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- PCOS -->
+  <section id="pcos" style="background:#fff;padding:clamp(52px,7vw,88px) 24px;scroll-margin-top:130px">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(36px,5vw,56px);align-items:center">
+      <div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 18px;color:#011D3E">Precinct committee officers</h2>
+        <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0 0 16px">PCOs are the only party officials elected directly by voters. They know their precinct, talk with neighbors about elections, help turn out the vote, and represent their precinct within the district party.</p>
+        <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0 0 26px">Many precincts in the 48th do not yet have a PCO. Filling those seats is one of the most powerful ways to build lasting Democratic strength here.</p>
+        <a href="become-pco.dc.html" style="display:inline-flex;align-items:center;min-height:52px;padding:0 28px;background:#0267BD;color:#fff;font-weight:700;font-size:17px;text-decoration:none;border-radius:10px" style-hover="background:#0BA5E9">Become a PCO</a>
+      </div>
+      <img src="assets/images/5-canvass_neighbors.png" alt="A precinct committee officer talking with neighbors at their home" style="display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;border:1px solid #cfe2f3"/>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#011D3E;color:#fff;padding:clamp(52px,7vw,84px) 24px;text-align:center">
+    <div style="max-width:680px;margin:0 auto">
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);letter-spacing:-0.6px;margin:0 0 16px">Ready to get involved?</h2>
+      <p style="font-size:18px;line-height:1.6;color:#C7DDF0;margin:0 0 30px">The best way to support the work is to become a member. It takes a few minutes and no donation is required.</p>
+      <a href="become-member.dc.html" style="display:inline-flex;align-items:center;min-height:56px;padding:0 34px;background:#0267BD;color:#fff;font-weight:700;font-size:18px;text-decoration:none;border-radius:11px;box-shadow:0 10px 30px rgba(2,103,189,0.4)" style-hover="background:#0BA5E9">Become a member</a>
+    </div>
+  </section>
+
+  <dc-import name="footer" hint-size="100%,460px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    document.querySelectorAll('img[data-official-photo]').forEach((image) => {
+      image.src = image.dataset.officialPhoto;
+    });
+  }
+
+  renderVals() {
+    return {
+      values: [
+        { title: 'Democracy up close', body: 'We make politics local, human, and welcoming.' },
+        { title: 'Everyone belongs', body: 'Newcomers and longtime activists alike have a seat at the table.' },
+        { title: 'Action over talk', body: 'We measure success in doors knocked and votes turned out.' },
+        { title: 'Rooted on the Eastside', body: 'We organize where we live, for the community we share.' },
+      ],
+      activities: [
+        { n: '1', title: 'Monthly meetings', body: 'Open to all. We hear from candidates and officials and set our priorities together.' },
+        { n: '2', title: 'Endorse candidates', body: 'Members vote to endorse local and statewide candidates who share our values.' },
+        { n: '3', title: 'Recruit PCOs', body: 'We build a network of precinct committee officers, the front line of the party.' },
+        { n: '4', title: 'Pass resolutions', body: 'We take positions on the issues that matter to the Eastside and Washington.' },
+        { n: '5', title: 'Campaign and turn out voters', body: 'We knock doors, make calls, and get out the vote every election.' },
+      ],
+      board: [
+        { role: 'Chair', name: 'Katie Moussouris', pronouns: 'she/her' },
+        { role: 'Vice Chair', name: 'Dave Martine', pronouns: 'he/him' },
+        { role: 'Treasurer', name: 'Laila Saliba', pronouns: 'she/her' },
+        { role: 'Deputy Treasurer', name: 'Paul Neil', pronouns: 'he/him' },
+        { role: 'Secretary', name: 'Susan Cockrell', pronouns: 'she/her' },
+        { role: 'Membership Coordinator', name: 'Catherine Minch', pronouns: 'she/her' },
+        { role: 'Representative to KCDCC', name: 'Hanna Floss', pronouns: 'she/her' },
+        { role: 'Representative to KCDCC', name: 'Vijay Beniwal', pronouns: 'he/him' },
+        { role: 'Representative to WSDCC', name: 'Scott Aldridge', pronouns: 'he/him' },
+        { role: 'Representative to WSDCC', name: 'Katie Moussouris', pronouns: 'she/her' },
+        { role: 'Representative to King County Young Democrats', name: 'Vivek Prakriya', pronouns: 'he/him' },
+        { role: 'Rules Committee Chair', name: 'Randy Grein', pronouns: 'he/him' },
+        { role: 'Endorsements Committee Chair', name: 'Rohit Narayanan', pronouns: 'he/him' },
+        { role: 'Diversity Committee Chair', name: 'Afnan Dallasheh', pronouns: 'she/her' },
+        { role: 'PCO Committee Chair', name: 'Matthew Sachs', pronouns: 'he/him' },
+      ],
+      officialGroups: [
+        { title: 'Washington State', people: [
+          { name: 'Gov. Bob Ferguson', office: 'Governor of Washington', photo: 'https://ld48dems.org/wp/wp-content/uploads/2025/03/Bob_Ferguson_Head_Shot.jpg', website: 'https://governor.wa.gov/about/office-governor/about-governor-ferguson', contact: 'https://governor.wa.gov/contacting-governor/contacting-governors-office' },
+        ]},
+        { title: 'Federal', people: [
+          { name: 'Sen. Maria Cantwell', office: 'United States Senator', photo: 'https://ld48dems.org/wp/wp-content/uploads/2019/11/maria.cantwell-200x300.jpg', website: 'https://www.cantwell.senate.gov/', contact: 'https://www.cantwell.senate.gov/contact/email/form' },
+          { name: 'Sen. Patty Murray', office: 'United States Senator', photo: 'https://ld48dems.org/wp/wp-content/uploads/2019/11/Senator-Murray-240x300.jpg', website: 'https://www.murray.senate.gov/', contact: 'https://www.murray.senate.gov/write-to-patty/' },
+          { name: 'Rep. Suzan DelBene', office: 'U.S. House, Washington 1st District', photo: 'assets/images/6-Suzan_DelBene_.jpg', website: 'https://delbene.house.gov/', contact: 'https://delbene.house.gov/contact-me' },
+          { name: 'Rep. Adam Smith', office: 'U.S. House, Washington 9th District', photo: 'assets/images/7-Adam_Smith.jpg', website: 'https://adamsmith.house.gov/', contact: 'https://adamsmith.house.gov/contact' },
+        ]},
+        { title: 'Washington State Legislature, 48th District', people: [
+          { name: 'Sen. Vandana Slatter', office: 'State Senator', photo: 'assets/images/8-vandana_slatter.png', website: 'https://senatedemocrats.wa.gov/slatter/', contact: 'https://senatedemocrats.wa.gov/slatter/contact/' },
+          { name: 'Rep. Osman Salahuddin', office: 'State Representative, Position 1', photo: 'assets/images/9-osman_salahuddin.png', website: 'https://housedemocrats.wa.gov/salahuddin/', contact: 'https://housedemocrats.wa.gov/salahuddin/contact/' },
+          { name: 'Rep. Amy Walen', office: 'State Representative, Position 2', photo: 'assets/images/10-amy_walen.png', website: 'https://housedemocrats.wa.gov/walen/', contact: 'https://housedemocrats.wa.gov/walen/contact/' },
+        ]},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

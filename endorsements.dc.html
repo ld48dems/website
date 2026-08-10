@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Endorsements | 48th Legislative District Democrats</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta property="og:title" content="Endorsements | 48th Legislative District Democrats"/>
+<meta property="og:description" content="See the 48th Legislative District Democrats' 2026 endorsements, learn how to request an endorsement, and browse past endorsements."/>
+<meta property="og:image" content="assets/ld48-emblem.png"/>
+<meta property="og:type" content="website"/>
+<style>*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:#fff}a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px}.endorsements-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:clamp(32px,5vw,58px);align-items:start}.endorsements-list{display:flex;flex-direction:column;gap:clamp(40px,5vw,60px)}.candidate-rail{position:sticky;top:96px}@media(max-width:900px){.endorsements-layout{grid-template-columns:1fr}.candidate-rail{position:static;order:-1}}</style>
+</helmet>
+<div style="font-family:'Libre Franklin',system-ui,sans-serif;color:#102a43;background:#fff">
+
+  <dc-import name="nav" current="endorsements" hint-size="100%,74px"></dc-import>
+
+  <section id="main-content" style="background:#011D3E;color:#fff;padding:clamp(48px,7vw,84px) 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;font-weight:700;color:#63A434;margin:0 0 14px">2026 cycle</p>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.5vw,60px);line-height:1.04;letter-spacing:-1px;margin:0 0 22px">Endorsements</h1>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.6;color:#C7DDF0;margin:0;max-width:720px">Our members evaluate and vote to endorse candidates up and down the ballot. We take this responsibility seriously, using a fair and transparent process that gives our members confidence in every recommendation.</p>
+    </div>
+  </section>
+
+  <section style="background:#fff;padding:clamp(48px,7vw,80px) 24px clamp(24px,4vw,40px)">
+    <div class="endorsements-layout" style="max-width:1100px;margin:0 auto">
+      <div class="endorsements-list">
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+          <div>
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:22px">
+              <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,3vw,30px);letter-spacing:-0.4px;margin:0;color:#011D3E">{{ g.title }}</h2>
+              <span style="height:1px;background:#cfe2f3;flex:1"></span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px">
+              <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="3">
+                <div style="border:1px solid #d8e6f2;border-radius:14px;padding:20px 22px;background:#fff;display:flex;align-items:flex-start;gap:14px" style-hover="border-color:#0267BD">
+                  <span style="width:11px;height:11px;border-radius:50%;background:#63A434;margin-top:6px;flex-shrink:0"></span>
+                  <div>
+                    <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:#011D3E;line-height:1.2">{{ c.name }}</div>
+                    <div style="font-size:14.5px;color:#3a546e;margin-top:3px">{{ c.office }}</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+
+        <div style="background:#E1EFF8;border-radius:16px;padding:clamp(26px,4vw,36px);display:flex;flex-wrap:wrap;align-items:center;gap:18px;justify-content:space-between">
+          <div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;margin:0 0 6px;color:#011D3E">Want a say in who we endorse?</h3>
+            <p style="margin:0;font-size:16px;color:#3a546e">Members in good standing vote on every endorsement.</p>
+          </div>
+          <a href="become-member.dc.html" style="display:inline-flex;align-items:center;min-height:52px;padding:0 28px;background:#0267BD;color:#fff;font-weight:700;font-size:17px;text-decoration:none;border-radius:10px" style-hover="background:#0BA5E9">Become a member</a>
+        </div>
+      </div>
+      <aside class="candidate-rail" aria-labelledby="candidate-rail-title" style="background:#E1EFF8;border:1px solid #cfe2f3;border-radius:16px;padding:28px">
+        <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:13px;font-weight:700;color:#0267BD;margin:0 0 10px">For candidates</p>
+        <h2 id="candidate-rail-title" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:28px;line-height:1.1;margin:0 0 14px;color:#011D3E">Request an endorsement</h2>
+        <p style="font-size:15px;line-height:1.55;color:#3a546e;margin:0 0 22px">Deadlines move quickly. Start as soon as you know you plan to file.</p>
+        <ol style="list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:17px">
+          <li style="display:grid;grid-template-columns:32px 1fr;gap:11px;align-items:start">
+            <span style="width:32px;height:32px;border-radius:8px;background:#011D3E;color:#0BA5E9;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800">1</span>
+            <div><strong style="display:block;color:#011D3E;font-size:15px;margin-bottom:3px">County questionnaire</strong><a href="https://www.kcdems.org/candidate-questionnaire/" target="_blank" rel="noopener" style="color:#0267BD;font-size:14px;font-weight:600">Complete the KCD form</a></div>
+          </li>
+          <li style="display:grid;grid-template-columns:32px 1fr;gap:11px;align-items:start">
+            <span style="width:32px;height:32px;border-radius:8px;background:#011D3E;color:#0BA5E9;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800">2</span>
+            <div><strong style="display:block;color:#011D3E;font-size:15px;margin-bottom:3px">LD 48 request</strong><a href="https://docs.google.com/forms/d/e/1FAIpQLScjQ9OANhIoFdcYJ01SxlotVUmkiDECjJYSyBVfdNTL3cnmLQ/viewform" target="_blank" rel="noopener" style="color:#0267BD;font-size:14px;font-weight:600">Submit request and agreement</a></div>
+          </li>
+          <li style="display:grid;grid-template-columns:32px 1fr;gap:11px;align-items:start">
+            <span style="width:32px;height:32px;border-radius:8px;background:#011D3E;color:#0BA5E9;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800">3</span>
+            <div><strong style="display:block;color:#011D3E;font-size:15px;margin-bottom:3px">Committee interview</strong><span style="font-size:14px;line-height:1.45;color:#3a546e">We will contact you to schedule.</span></div>
+          </li>
+        </ol>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScjQ9OANhIoFdcYJ01SxlotVUmkiDECjJYSyBVfdNTL3cnmLQ/viewform" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 20px;background:#0267BD;color:#fff;font-weight:700;font-size:16px;text-align:center;text-decoration:none;border-radius:10px" style-hover="background:#0BA5E9;color:#fff">Request endorsement</a>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:18px;padding-top:18px;border-top:1px solid #b8cee1;font-size:14px">
+          <a href="https://docs.google.com/document/d/1_sCw-QsJrdlRaXRfDt0cJz5jtxabZ1lu/edit?usp=sharing" target="_blank" rel="noopener" style="font-weight:700;color:#0267BD">Read endorsement rules</a>
+          <a href="mailto:ld48-dems-endorsements-committee@googlegroups.com" style="font-weight:700;color:#0267BD">Email the committee</a>
+        </div>
+      </aside>
+      </div>
+  </section>
+
+  <section style="background:#fff;padding:clamp(24px,4vw,40px) 24px clamp(48px,7vw,80px)">
+    <div style="max-width:1100px;margin:0 auto">
+      <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;font-weight:700;color:#0267BD;margin:0 0 14px">Archive</p>
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 14px;color:#011D3E">Past endorsements</h2>
+      <p style="font-size:17px;line-height:1.6;color:#3a546e;margin:0 0 28px;max-width:700px">Review LD 48 endorsement decisions from previous primary and general elections.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px">
+        <sc-for list="{{ archives }}" as="a" hint-placeholder-count="6">
+          <a href="{{ a.url }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding:16px 18px;border:1px solid #d8e6f2;border-radius:12px;background:#fff;color:#011D3E;text-decoration:none;font-weight:700;line-height:1.35" style-hover="border-color:#0267BD;color:#0267BD;box-shadow:0 8px 22px rgba(1,29,62,0.08)"><span>{{ a.label }}</span><span aria-hidden="true" style="color:#0267BD">&nearr;</span></a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { groups: [], archives: [] };
+
+  componentDidMount() {
+    fetch('./assets/content/endorsements.json')
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((data) => this.setState({ groups: data.groups || [], archives: data.archives || [] }))
+      .catch(() => this.setState({ groups: [], archives: [] }));
+  }
+
+  renderVals() {
+    const fallbackGroups = [
+        { title: 'U.S. Congress', items: [
+          { name: 'Adam Smith', office: 'U.S. Representative, Congressional District 9' },
+        ]},
+        { title: 'Washington State Supreme Court', items: [
+          { name: 'Colleen Melody', office: 'Justice, Position 1' },
+          { name: 'J. Michael Diaz', office: 'Justice, Position 3, dual endorsement' },
+          { name: 'Jaime Hawk', office: 'Justice, Position 3, dual endorsement' },
+          { name: 'Ian Birk', office: 'Justice, Position 4' },
+          { name: 'Theo Angelis', office: 'Justice, Position 5' },
+          { name: 'Debra Stephens', office: 'Justice, Position 7' },
+        ]},
+        { title: 'King County', items: [
+          { name: 'Claudia Balducci', office: 'King County Council, Position 6' },
+          { name: 'Rob Foxcurran', office: 'King County Assessor' },
+          { name: 'Leesa Manion', office: 'Prosecuting Attorney' },
+          { name: 'Julie Wise', office: 'Director of Elections' },
+        ]},
+        { title: 'Washington State Legislature', items: [
+          { name: 'Vandana Slatter', office: 'Washington State Senate' },
+          { name: 'Osman Salahuddin', office: 'State Representative, Position 1' },
+          { name: 'Jessica Forsythe', office: 'State Representative, Position 2' },
+        ]},
+        { title: 'King County District Court, Northeast', items: [
+          { name: 'Jan Trasen', office: 'Judge, Position 1' },
+          { name: "Lisa O'Toole", office: 'Judge, Position 3' },
+          { name: 'Kevin Peck', office: 'Judge, Position 4' },
+          { name: 'Denice Gagner', office: 'Judge, Position 6' },
+          { name: 'Peter Peaquin', office: 'Judge, Position 7' },
+        ]},
+        { title: 'Precinct Committee Officers', items: [
+          { name: 'Rick Kirkham', office: 'BEL 48-0217' },
+          { name: 'Paul Neil', office: 'BEL 48-2776' },
+          { name: 'Bill Cruikshank', office: 'KIR 48-3401' },
+          { name: 'Siddh Bhanushali', office: 'RED 48-0944' },
+          { name: 'Aspen Richter', office: 'RED 48-4007' },
+        ]},
+      ];
+    const fallbackArchives = [
+        { label: '2025 General Election Ballot Endorsements', url: 'https://docs.google.com/document/d/1cxTpS2Kp7v7YDHL8dZ9YAKOYR0UV55DM/edit?usp=sharing&ouid=113880194210259984136&rtpof=true&sd=true' },
+        { label: '2024 General Endorsements', url: 'https://docs.google.com/document/d/1chiz1JgjmRRlzyn_brUOiaMzNUyTSKC7/edit?usp=sharing&ouid=113880194210259984136&rtpof=true&sd=true' },
+        { label: '2023 General Endorsements (request archived copy)', url: 'contact.dc.html' },
+        { label: '2022 Primary & General Endorsements', url: 'https://docs.google.com/document/d/1uwVv04J_C3U9ma-ZkXTYqzYK0XmdlTXXSlxvplHNO9w/edit?usp=sharing' },
+        { label: '2021 General Endorsements', url: 'https://docs.google.com/document/d/1zpx2pVaonqnaiOtSITjaGF9gK5OjCMYts-PhumoOuLQ/edit?usp=sharing' },
+        { label: '2021 Primary Endorsements', url: 'https://docs.google.com/document/d/1w-2hKlXs39R3S0UC0syquoHRXtn7JpecE6lDEsbtexU/edit?usp=sharing' },
+        { label: '2020 General Endorsements', url: 'https://docs.google.com/document/d/1-LKqON7Hz10aYjN127Z3od_HHvjJXU8IiUq6r5xIPA8/edit?usp=sharing' },
+        { label: '2020 Primary Endorsements', url: 'https://drive.google.com/open?id=1U9TPrflK_crLAJuY8gJ_Oloz6fDYWt13I-NEOCYPAuQ' },
+        { label: '2019 General Endorsements', url: 'https://docs.google.com/document/d/18Chi1ZeacrDOYsHf6RpY3o_9hjqfN5G6dhBCtBIJYDo/edit?usp=sharing' },
+        { label: '2019 Primary Endorsements', url: 'https://docs.google.com/document/d/1NBnKDdvD3MQs4SRZ0x4cVJJx-87ClItHx1MZI_DloNI/edit?usp=sharing' },
+        { label: '2018 General Endorsements', url: 'https://docs.google.com/document/d/15AAj9DZvZ_WP3OCJi8mKvpvXbeICcrrdlnTyVwTvRco/edit?usp=sharing' },
+        { label: '2018 Primary Endorsements', url: 'https://docs.google.com/document/d/1ewVMk-ixbnaBQM-5PRPq7YoBNAszmgvBT8mt6ECFgck/edit?usp=sharing' },
+        { label: '2017 General Endorsements', url: 'https://docs.google.com/document/d/1j9ebRTNGnCdNPYWfU-G2qo4CY_Uvlw8DgR0Kbvsd1qU/edit?usp=sharing' },
+        { label: '2017 Primary Endorsements', url: 'https://docs.google.com/document/d/1iqNjWyTLnxr7mvzGFv-XC12W2GXE_P1oRkWsC6uAsFg/edit?usp=sharing' },
+      ];
+    return {
+      groups: this.state.groups.length ? this.state.groups : fallbackGroups,
+      archives: this.state.archives.length ? this.state.archives : fallbackArchives,
+    };
+  }
+}
+</script>
+</body>
+</html>

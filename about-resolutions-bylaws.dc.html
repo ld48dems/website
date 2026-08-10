@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resolutions and bylaws | 48th Legislative District Democrats</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta property="og:title" content="Resolutions and bylaws | 48th Legislative District Democrats"/>
+<meta property="og:description" content="The governing documents of the 48th Legislative District Democrats."/>
+<meta property="og:image" content="assets/ld48-emblem.png"/>
+<style>*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:#fff}a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px}</style>
+</helmet>
+<div style="font-family:'Libre Franklin',system-ui,sans-serif;color:#102a43;background:#fff">
+
+  <dc-import name="nav" current="" hint-size="100%,74px"></dc-import>
+
+  <section id="main-content" style="background:#011D3E;color:#fff;padding:clamp(48px,7vw,84px) 24px">
+    <div style="max-width:880px;margin:0 auto">
+      <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;font-weight:700;color:#63A434;margin:0 0 14px">About</p>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.5vw,60px);line-height:1.04;letter-spacing:-1px;margin:0 0 22px">Resolutions and bylaws</h1>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.6;color:#C7DDF0;margin:0;max-width:680px">Our governing documents set out how we operate, make decisions, and adopt positions. They are public and open to every member.</p>
+    </div>
+  </section>
+
+  <section style="background:#fff;padding:clamp(48px,7vw,80px) 24px">
+    <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="3">
+        <a href="{{ d.href }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:18px;border:1px solid #d8e6f2;border-radius:14px;padding:22px 24px;text-decoration:none;background:#fff" style-hover="border-color:#0267BD;box-shadow:0 10px 30px rgba(1,29,62,0.08)">
+          <div style="width:48px;height:48px;border-radius:11px;background:#E1EFF8;color:#0267BD;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;flex-shrink:0">{{ d.type }}</div>
+          <div style="flex:1">
+            <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;color:#011D3E">{{ d.title }}</div>
+            <div style="font-size:14.5px;color:#3a546e;margin-top:3px">{{ d.body }}</div>
+          </div>
+          <span style="color:#0267BD;font-weight:700;font-size:22px">&#8594;</span>
+        </a>
+      </sc-for>
+
+      <div style="margin-top:16px;background:#E1EFF8;border-radius:16px;padding:clamp(26px,4vw,36px)">
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:22px;margin:0 0 8px;color:#011D3E">Looking for our positions?</h2>
+        <p style="margin:0 0 18px;font-size:16px;line-height:1.6;color:#3a546e">Adopted resolutions are published on our resolutions page as the membership passes them.</p>
+        <a href="resolutions.dc.html" style="display:inline-flex;align-items:center;min-height:50px;padding:0 26px;background:#0267BD;color:#fff;font-weight:700;font-size:16px;text-decoration:none;border-radius:10px" style-hover="background:#0BA5E9">View resolutions</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      docs: [
+        { type: 'NOW', title: 'Current bylaws', body: 'Adopted March 11, 2026.', href: 'https://docs.google.com/document/d/1HZJzokNh62lr20yMuhV2cvQx_P3esdum/edit?usp=sharing' },
+        { type: 'OLD', title: 'Bylaws adopted February 11, 2026', body: 'Historical governing document.', href: 'https://docs.google.com/document/d/1FHKDSDN4uAYMhe4kHwmYU6oCrz82_6n7/edit?usp=sharing' },
+        { type: 'OLD', title: 'Bylaws adopted January 14, 2025', body: 'Historical governing document.', href: 'https://docs.google.com/document/d/10NBWe1OExaTPkRdM_nkPdsG0vOxDWVMt/edit?usp=sharing' },
+        { type: 'OLD', title: 'Bylaws adopted December 14, 2022', body: 'Historical governing document.', href: 'https://docs.google.com/document/d/15rH4tI92Z94-6fZ7KoSAtSg2EQsqfpOf/edit?usp=sharing' },
+        { type: 'RULE', title: 'Standing Rules for Meetings', body: 'Current 2025 meeting procedures.', href: 'https://docs.google.com/document/d/1n1gmxia-1LdRCkIfw7elAwg6yzAdXrfl/edit?usp=sharing' },
+        { type: 'RULE', title: 'Endorsement Rules', body: 'Current rules adopted March 2026.', href: 'https://docs.google.com/document/d/1_sCw-QsJrdlRaXRfDt0cJz5jtxabZ1lu/edit?usp=sharing' },
+        { type: 'OLD', title: 'Endorsement Rules, March 2021', body: 'Historical endorsement rules.', href: 'https://drive.google.com/file/d/1Rm54ByEomOwSBzydNfQHTOaYapHeUH5N/view?usp=sharing' },
+        { type: 'RULE', title: 'Rules for Adoption of Resolutions', body: 'Adopted in 2021.', href: 'https://docs.google.com/document/d/1AAY9CN7fcTUJ12My_XOLMisc9RyWM_yf/edit?usp=sharing' },
+        { type: 'NOW', title: 'Code of Conduct', body: 'Current code adopted March 2026.', href: 'https://docs.google.com/document/d/1HubItDwNdtJE5LFIlooPVmvvfJ_C4ksS/edit?usp=sharing' },
+        { type: 'OLD', title: 'Code of Conduct, April 2025', body: 'Historical code of conduct.', href: 'https://docs.google.com/document/d/1bAzGfpy30v49DRnv6eAAnXV9eYUQrkMs/edit?usp=sharing' },
+        { type: 'KCD', title: 'King County Democrats bylaws and standing rules', body: 'County party governing documents.', href: 'https://www.kcdems.org/our-party/standing-rules/' },
+        { type: 'WSD', title: 'Washington State Democrats party documents', body: 'State party governing documents.', href: 'https://wadems.org/our-party/documents/' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

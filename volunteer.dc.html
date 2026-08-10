@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Volunteer | 48th Legislative District Democrats</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta property="og:title" content="Volunteer or take action | 48th Legislative District Democrats"/>
+<meta property="og:description" content="Knock doors, make calls, table at events, or join a vetted partner action with the 48th Legislative District Democrats."/>
+<meta property="og:image" content="assets/ld48-emblem.png"/>
+<meta property="og:type" content="website"/>
+<style>*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:#fff}a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px}</style>
+</helmet>
+<div style="font-family:'Libre Franklin',system-ui,sans-serif;color:#102a43;background:#fff">
+
+  <dc-import name="nav" current="involved" hint-size="100%,74px"></dc-import>
+
+  <section id="main-content" style="background:#011D3E;color:#fff;padding:clamp(48px,7vw,84px) 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;font-weight:700;color:#63A434;margin:0 0 14px">Take action</p>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5.5vw,60px);line-height:1.04;letter-spacing:-1px;margin:0 0 22px">Volunteer or take action</h1>
+      <p style="font-size:clamp(17px,2vw,20px);line-height:1.6;color:#C7DDF0;margin:0;max-width:680px">We don't always have a shift open the day you're free \u2014 so below is everything happening right now: our own volunteer shifts, plus partner actions we've reviewed and vetted this week.</p>
+    </div>
+  </section>
+
+  <!-- WHAT'S OPEN NOW -->
+  <section style="background:#fff;padding:clamp(44px,6vw,64px) 24px">
+    <div style="max-width:1100px;margin:0 auto">
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3.2vw,30px);letter-spacing:-0.4px;margin:0 0 20px;color:#011D3E">What's open now</h2>
+      <sc-if value="{{ hasEvents }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+            <div style="border:1px solid #d8e6f2;border-radius:14px;padding:20px 22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+              <div style="flex-shrink:0;width:62px;text-align:center;background:#011D3E;color:#fff;border-radius:10px;padding:10px 6px">
+                <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;letter-spacing:1px;color:#0BA5E9;text-transform:uppercase">{{ e.mon }}</div>
+                <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;line-height:1">{{ e.day }}</div>
+              </div>
+              <div style="flex:1;min-width:200px">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+                  <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;margin:0;color:#011D3E">{{ e.title }}</h3>
+                  <sc-if value="{{ e.isAction }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-size:11px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;color:#0267BD;background:#E1EFF8;border-radius:999px;padding:2px 9px">{{ e.source }}</span>
+                  </sc-if>
+                </div>
+                <p style="margin:0;font-size:14.5px;color:#3a546e">{{ e.meta }}</p>
+              </div>
+              <a href="{{ e.href }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;background:#0267BD;color:#fff;font-weight:700;font-size:15px;text-decoration:none;border-radius:9px;white-space:nowrap" style-hover="background:#0BA5E9;color:#fff">{{ e.cta }}</a>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <p style="margin:16px 0 0;font-size:13.5px;color:#6b8199">Partner actions are reviewed and approved weekly \u2014 nothing here is posted automatically without a check.</p>
+    </div>
+  </section>
+
+  <section style="background:#fff;padding:clamp(28px,4vw,44px) 24px 0">
+    <div style="max-width:1100px;margin:0 auto">
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3.2vw,30px);letter-spacing:-0.4px;margin:0 0 20px;color:#011D3E">Standing ways to help</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px">
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="4">
+          <div style="border:1px solid #d8e6f2;border-radius:16px;padding:26px 24px;background:#fff">
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:20px;margin:0 0 10px;color:#011D3E">{{ r.title }}</h3>
+            <p style="margin:0;font-size:15.5px;line-height:1.55;color:#3a546e">{{ r.body }}</p>
+            <a href="{{ r.href }}" style="display:inline-block;margin-top:14px;font-size:14.5px;font-weight:700;color:#0267BD">Contact {{ r.contact }}</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#E1EFF8;padding:clamp(48px,7vw,80px) 24px;margin-top:clamp(44px,6vw,64px)">
+    <div style="max-width:720px;margin:0 auto">
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,3.6vw,38px);letter-spacing:-0.5px;margin:0 0 10px;color:#011D3E">Sign up to volunteer</h2>
+      <p style="font-size:17px;line-height:1.6;color:#3a546e;margin:0 0 28px">No shift matches your schedule? Tell us what you're good at and we'll reach out when something fits.</p>
+
+      <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background:#fff;border:1px solid #63A434;border-radius:14px;padding:26px;font-size:17px;color:#011D3E;font-weight:600">Thank you for signing up to volunteer. We will be in touch soon with ways to help.</div>
+      </sc-if>
+
+      <sc-if value="{{ open }}" hint-placeholder-val="{{ true }}">
+      <form name="volunteer" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onSubmit }}" novalidate style="display:flex;flex-direction:column;gap:20px;background:#fff;border:1px solid #cfe2f3;border-radius:18px;padding:clamp(24px,3.5vw,36px)">
+        <input type="hidden" name="form-name" value="volunteer"/>
+        <p style="display:none"><label>Don't fill this out: <input name="bot-field"/></label></p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+          <div style="display:flex;flex-direction:column">
+            <label for="v-name" style="display:block;font-size:14.5px;font-weight:600;color:#011D3E;margin-bottom:7px">Name <span style="color:#c0392b">*</span></label>
+            <input id="v-name" name="name" type="text" required style="width:100%;min-height:50px;border:1px solid #c3d6e8;border-radius:10px;padding:0 16px;font-size:16px;font-family:inherit;color:#102a43" style-focus="border-color:#0267BD;box-shadow:0 0 0 3px rgba(2,103,189,0.18);outline:none"/>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <label for="v-email" style="display:block;font-size:14.5px;font-weight:600;color:#011D3E;margin-bottom:7px">Email <span style="color:#c0392b">*</span></label>
+            <input id="v-email" name="email" type="email" required style="width:100%;min-height:50px;border:1px solid #c3d6e8;border-radius:10px;padding:0 16px;font-size:16px;font-family:inherit;color:#102a43" style-focus="border-color:#0267BD;box-shadow:0 0 0 3px rgba(2,103,189,0.18);outline:none"/>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;max-width:320px">
+          <label for="v-phone" style="display:block;font-size:14.5px;font-weight:600;color:#011D3E;margin-bottom:7px">Phone</label>
+          <input id="v-phone" name="phone" type="tel" style="width:100%;min-height:50px;border:1px solid #c3d6e8;border-radius:10px;padding:0 16px;font-size:16px;font-family:inherit;color:#102a43" style-focus="border-color:#0267BD;box-shadow:0 0 0 3px rgba(2,103,189,0.18);outline:none"/>
+        </div>
+        <fieldset style="border:0;margin:0;padding:0">
+          <legend style="font-size:14.5px;font-weight:600;color:#011D3E;margin-bottom:12px;padding:0">I am interested in (select all that apply)</legend>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
+            <sc-for list="{{ interests }}" as="i" hint-placeholder-count="4">
+              <label style="display:flex;align-items:center;gap:11px;border:1px solid #c3d6e8;border-radius:10px;padding:13px 14px;cursor:pointer;font-size:15px;color:#102a43" style-hover="border-color:#0267BD;background:#f5faff">
+                <input type="checkbox" name="interest" value="{{ i }}" style="width:20px;height:20px;accent-color:#0267BD;flex-shrink:0"/>{{ i }}
+              </label>
+            </sc-for>
+          </div>
+        </fieldset>
+        <button type="submit" style="align-self:flex-start;min-height:54px;padding:0 34px;border:0;border-radius:11px;background:#0267BD;color:#fff;font-weight:700;font-size:17px;cursor:pointer;font-family:inherit" style-hover="background:#0BA5E9">Count me in</button>
+      </form>
+      </sc-if>
+    </div>
+  </section>
+
+  <dc-import name="footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { done: false, events: [] };
+
+  componentDidMount() {
+    import('./assets/events-data.js').then(async (mod) => {
+      const events = await mod.getAllEvents({ count: 4 });
+      const shiftsAndActions = events.filter((e) => e.type !== 'meeting');
+      const list = (shiftsAndActions.length ? shiftsAndActions : events).map((e) => {
+        const f = mod.fmtDate(e.start);
+        return { mon: f.mon, day: f.day, title: e.title, meta: mod.fmtWhen(e.start) + ' \u00b7 ' + e.where, isAction: e.type === 'action', source: e.source, href: e.href || '#lookup', cta: e.cta || 'Details' };
+      });
+      this.setState({ events: list });
+    });
+  }
+
+  renderVals() {
+    return {
+      done: this.state.done,
+      open: !this.state.done,
+      events: this.state.events,
+      hasEvents: this.state.events.length > 0,
+      onSubmit: async (e) => {
+        e.preventDefault();
+        if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
+        const form = e.target;
+        try {
+          const response = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
+          if (!response.ok) throw new Error('Submission failed');
+          this.setState({ done: true });
+        } catch {
+          window.alert('We could not submit the volunteer form. Please try again in a moment.');
+        }
+      },
+      roles: [
+        { title: 'Parades, festivals, and service', body: 'March with us, register voters at festival booths, or help with Adopt-a-Street.', contact: 'Catherine Minch', href: 'mailto:ld48demsmembership@outlook.com' },
+        { title: 'Social media', body: 'Help LD 48 reach more people on Bluesky, Threads, Instagram, and other social channels.', contact: 'Susan Cockrell', href: 'mailto:ld48demssocial@gmail.com' },
+        { title: 'Campaign volunteering', body: 'Connect with a local campaign that needs canvassers, callers, and other volunteers.', contact: 'Katie Moussouris', href: 'mailto:48thdems@gmail.com' },
+        { title: 'Help behind the scenes', body: 'Support data entry, hospitality, event setup, and other operational work.', contact: 'the LD 48 team', href: 'mailto:48thdems@gmail.com' },
+      ],
+      interests: ['Canvassing', 'Phone and text banking', 'Tabling and events', 'Data and tech', 'Social media', 'Hospitality'],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

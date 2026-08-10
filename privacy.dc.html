@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy | 48th Legislative District Democrats</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Libre+Franklin:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta property="og:title" content="Privacy policy | 48th Legislative District Democrats"/>
+<meta property="og:description" content="How the 48th Legislative District Democrats collect, use, and protect your information."/>
+<meta property="og:image" content="assets/ld48-emblem.png"/>
+<style>*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:#fff}a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px}</style>
+</helmet>
+<div style="font-family:'Libre Franklin',system-ui,sans-serif;color:#102a43;background:#fff">
+
+  <dc-import name="nav" current="" hint-size="100%,74px"></dc-import>
+
+  <section id="main-content" style="background:#011D3E;color:#fff;padding:clamp(48px,7vw,84px) 24px">
+    <div style="max-width:820px;margin:0 auto">
+      <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;font-weight:700;color:#63A434;margin:0 0 14px">About</p>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:-1px;margin:0 0 16px">Privacy policy</h1>
+      <p style="font-size:16px;color:#9FC6E6;margin:0">Last updated June 2026</p>
+    </div>
+  </section>
+
+  <section style="background:#fff;padding:clamp(44px,6vw,72px) 24px">
+    <div style="max-width:820px;margin:0 auto">
+      <p style="font-size:18px;line-height:1.7;color:#3a546e;margin:0 0 36px">The 48th Legislative District Democrats respect your privacy. This policy explains what we collect, how we use it, and the choices you have.</p>
+      <sc-for list="{{ sections }}" as="s" hint-placeholder-count="6">
+        <div style="margin-bottom:32px">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(21px,2.6vw,26px);margin:0 0 12px;color:#011D3E">{{ s.h }}</h2>
+          <sc-for list="{{ s.p }}" as="para" hint-placeholder-count="2">
+            <p style="font-size:17px;line-height:1.7;color:#3a546e;margin:0 0 12px">{{ para }}</p>
+          </sc-for>
+        </div>
+      </sc-for>
+      <div style="border-top:1px solid #e2ecf5;padding-top:24px;font-size:17px;line-height:1.7;color:#3a546e">Questions about this policy? Email us at <a href="mailto:48thdems@gmail.com" style="color:#0267BD;font-weight:600">48thdems@gmail.com</a>.</div>
+    </div>
+  </section>
+
+  <dc-import name="footer" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:760}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      sections: [
+        { h: 'Information we collect', p: ['We collect information you give us directly, such as your name, email address, mailing address, phone number, precinct, and congressional district when you become a member, volunteer, sign up for updates, or contact us.', 'We may collect limited technical information, such as your device type and pages visited, to keep the site working well.'] },
+        { h: 'How we use your information', p: ['We use your information to manage membership, organize events, send updates you request, recruit volunteers, and carry out the work of the district party. We do not sell your personal information.'] },
+        { h: 'Text messaging', p: ['If you opt in to SMS, we use your phone number only to send the messages you agreed to receive. Mobile opt-in data is never shared with third parties for marketing. You can opt out at any time by replying STOP.'] },
+        { h: 'Sharing', p: ['We may share information with trusted service providers who help us operate, such as email and SMS platforms, and only as needed to provide their service. We may disclose information if required by law or to comply with campaign finance reporting.'] },
+        { h: 'Your choices', p: ['You can unsubscribe from emails using the link in any message, opt out of texts by replying STOP, or contact us to update or delete your information.'] },
+        { h: 'Data retention and security', p: ['We keep your information only as long as needed for the purposes described here or as required by law, and we take reasonable steps to protect it.'] },
+        { h: 'Changes to this policy', p: ['We may update this policy from time to time. We will post the updated version here with a revised date.'] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

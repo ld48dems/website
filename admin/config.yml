@@ -1,0 +1,89 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+publish_mode: simple
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: site_content
+    label: Website content
+    files:
+      - name: endorsements
+        label: Endorsements
+        file: assets/content/endorsements.json
+        format: json
+        fields:
+          - { label: Election cycle, name: cycle, widget: string }
+          - label: Endorsement groups
+            name: groups
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Category, name: title, widget: string }
+              - label: Endorsed candidates or PCOs
+                name: items
+                widget: list
+                summary: "{{fields.name}}: {{fields.office}}"
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Office or precinct, name: office, widget: string }
+          - label: Past endorsement documents
+            name: archives
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { label: Document label, name: label, widget: string }
+              - { label: Document URL, name: url, widget: string }
+
+      - name: resolutions
+        label: Resolutions
+        file: assets/content/resolutions.json
+        format: json
+        fields:
+          - label: Adopted resolutions
+            name: resolutions
+            widget: list
+            summary: "{{fields.date}}: {{fields.title}}"
+            fields:
+              - { label: Year, name: year, widget: string }
+              - { label: Adoption date, name: date, widget: string }
+              - { label: Resolution title, name: title, widget: string }
+              - { label: Google document URL, name: url, widget: string }
+
+      - name: opportunities
+        label: Volunteer opportunities
+        file: assets/content/opportunities.json
+        format: json
+        fields:
+          - label: Current opportunities
+            name: opportunities
+            widget: list
+            summary: "{{fields.start}}: {{fields.title}}"
+            fields:
+              - { label: Approved to publish, name: approved, widget: boolean, default: false }
+              - { label: Internal ID, name: id, widget: string, hint: "Use a unique value such as action-2026-08-02-postcards." }
+              - { label: Title, name: title, widget: string }
+              - { label: Start date and time, name: start, widget: datetime, date_format: YYYY-MM-DD, time_format: HH:mm, format: "YYYY-MM-DDTHH:mm:ss" }
+              - { label: Location, name: where, widget: string }
+              - { label: Source organization, name: source, widget: string }
+              - { label: Details or signup URL, name: href, widget: string }
+              - { label: Button text, name: cta, widget: string, default: Details }
+
+      - name: pco_roster
+        label: PCO roster
+        file: assets/pco-roster.json
+        format: json
+        fields:
+          - { label: Last updated, name: updated, widget: date, format: YYYY-MM-DD }
+          - { label: Source URL, name: source, widget: hidden, default: "https://ld48dems.org/wp/pcos/" }
+          - label: Precincts
+            name: records
+            widget: list
+            summary: "{{fields.precinct}}: {{fields.name}}"
+            fields:
+              - { label: Precinct, name: precinct, widget: string }
+              - { label: PCO name, name: name, widget: string, hint: "Enter VACANT for an open precinct." }
+              - { label: Public email, name: email, widget: string }
