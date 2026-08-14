@@ -1,3 +1,14 @@
 {
-  "opportunities": []
+  "opportunities": [
+    {
+      "approved": true,
+      "cta": "Sign-up here!",
+      "id": "Aug 2026 Road Cleanup",
+      "title": "August 2026 Adopt-A-Road Clean-up",
+      "start": "2026-08-30T09:45:00",
+      "where": "Down Pour Coffee (13200 Old Redmond Road, Redmond)",
+      "source": "LD 48 Dems",
+      "href": "https://docs.google.com/forms/d/e/1FAIpQLSeO0EL772QCkHUQN8c23l6Y5c1nNQiAVukMbvNZi4xlRJkLhg/viewform"
+    }
+  ]
 }
