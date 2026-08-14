@@ -64,7 +64,7 @@ class Component extends DCLogic {
   componentDidMount() {
     fetch('./assets/content/resolutions.json')
       .then((response) => response.ok ? response.json() : Promise.reject())
-      .then((data) => this.setState({ resolutions: this.withLabels(data.resolutions || []) }))
+      .then((data) => this.setState({ resolutions: this.prepare(data.resolutions || []) }))
       .catch(() => this.setState({ resolutions: [] }));
   }
 
@@ -117,15 +117,19 @@ class Component extends DCLogic {
         { year: '2021', date: 'January 13, 2021', title: 'Support Green Bond Program', url: 'https://drive.google.com/file/d/1hjKRFkgA3_3x8A9EAmAszSGWaHhAL5-d/view?usp=sharing' },
       ];
     return {
-      resolutions: this.state.resolutions.length ? this.state.resolutions : this.withLabels(fallbackResolutions),
+      resolutions: this.state.resolutions.length ? this.state.resolutions : this.prepare(fallbackResolutions),
     };
   }
 
-  withLabels(resolutions) {
-    return resolutions.map((resolution) => ({
-      ...resolution,
-      linkLabel: resolution.url === 'contact.dc.html' ? 'Request archived copy' : 'Read the full resolution',
-    }));
+  prepare(resolutions) {
+    const time = (value) => { const parsed = Date.parse(value); return Number.isNaN(parsed) ? 0 : parsed; };
+    return resolutions
+      .slice()
+      .sort((a, b) => time(b.date) - time(a.date))
+      .map((resolution) => ({
+        ...resolution,
+        linkLabel: resolution.url === 'contact.dc.html' ? 'Request archived copy' : 'Read the full resolution',
+      }));
   }
 }
 </script>
