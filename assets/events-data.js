@@ -64,6 +64,7 @@ export async function fetchCuratedActions() {
       ...item,
       type: 'action',
       start: new Date(item.start),
+      end: item.end ? new Date(item.end) : null,
     }));
   } catch {
     return [];
@@ -119,4 +120,15 @@ export function fmtDate(d) {
 
 export function fmtWhen(d) {
   return d.toLocaleString('en-US', { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: d.getMinutes() ? '2-digit' : undefined });
+}
+
+export function fmtTime(d) {
+  return d.toLocaleString('en-US', { hour: 'numeric', minute: d.getMinutes() ? '2-digit' : undefined });
+}
+
+export function fmtWhenRange(start, end) {
+  const day = start.toLocaleString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+  if (!end || Number.isNaN(end.getTime())) return day + ', ' + fmtTime(start);
+  if (start.toDateString() === end.toDateString()) return day + ', ' + fmtTime(start) + ' to ' + fmtTime(end);
+  return day + ', ' + fmtTime(start) + ' to ' + end.toLocaleString('en-US', { month: 'short', day: 'numeric' }) + ', ' + fmtTime(end);
 }

@@ -4,6 +4,7 @@ backend:
 
 local_backend: true
 publish_mode: simple
+show_preview_links: false
 media_folder: assets/uploads
 public_folder: /assets/uploads
 
@@ -62,15 +63,19 @@ collections:
           - label: Current opportunities
             name: opportunities
             widget: list
+            add_to_top: true
             summary: "{{fields.start}}: {{fields.title}}"
             fields:
               - { label: Approved to publish, name: approved, widget: boolean, default: false }
               - { label: Internal ID, name: id, widget: string, hint: "Use a unique value such as action-2026-08-02-postcards." }
               - { label: Title, name: title, widget: string }
               - { label: Start date and time, name: start, widget: datetime, date_format: YYYY-MM-DD, time_format: HH:mm, format: "YYYY-MM-DDTHH:mm:ss" }
+              - { label: End date and time, name: end, widget: datetime, required: false, date_format: YYYY-MM-DD, time_format: HH:mm, format: "YYYY-MM-DDTHH:mm:ss" }
               - { label: Location, name: where, widget: string }
-              - { label: Source organization, name: source, widget: string }
-              - { label: Details or signup URL, name: href, widget: string }
+              - { label: Details, name: details, widget: text, required: false, hint: "What to expect, what to bring, who it is for." }
+              - { label: Contact person, name: contact_name, widget: string, required: false }
+              - { label: Contact email, name: contact_email, widget: string, required: false }
+              - { label: Signup or details link, name: href, widget: string, required: false }
               - { label: Button text, name: cta, widget: string, default: Details }
 
       - name: pco_roster

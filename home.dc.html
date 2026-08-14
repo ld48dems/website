@@ -143,16 +143,12 @@
               <div style="flex:1;min-width:0">
                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
                   <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;margin:0;color:#011D3E">{{ e.title }}</h3>
-                  <sc-if value="{{ e.isAction }}" hint-placeholder-val="{{ false }}">
-                    <span style="font-size:11px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;color:#0267BD;background:#E1EFF8;border-radius:999px;padding:2px 9px">{{ e.source }}</span>
-                  </sc-if>
                 </div>
                 <p style="margin:0;font-size:14px;color:#3a546e">{{ e.meta }}</p>
               </div>
             </li>
           </sc-for>
         </ul>
-        <p style="margin:14px 0 0;font-size:13.5px;color:#6b8199">Partner actions reviewed and approved weekly.</p>
       </div>
       <div>
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:26px">
@@ -219,7 +215,7 @@ class Component extends DCLogic {
       this.setState({
         events: events.map((e) => {
           const f = mod.fmtDate(e.start);
-          return { mon: f.mon, day: f.day, title: e.title, meta: mod.fmtWhen(e.start) + ' \u00b7 ' + e.where, isAction: e.type === 'action', source: e.source };
+          return { mon: f.mon, day: f.day, title: e.title, meta: mod.fmtWhenRange(e.start, e.end) + ' \u00b7 ' + e.where };
         }),
         nextMeetingLine: meeting ? (mod.fmtWhen(meeting.start) + ' \u00b7 ' + meeting.where) : '',
       });

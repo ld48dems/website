@@ -45,11 +45,11 @@
               <div style="flex:1;min-width:200px">
                 <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
                   <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;margin:0;color:#011D3E">{{ e.title }}</h3>
-                  <sc-if value="{{ e.isAction }}" hint-placeholder-val="{{ false }}">
-                    <span style="font-size:11px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;color:#0267BD;background:#E1EFF8;border-radius:999px;padding:2px 9px">{{ e.source }}</span>
-                  </sc-if>
                 </div>
                 <p style="margin:0;font-size:14.5px;color:#3a546e">{{ e.meta }}</p>
+                <sc-if value="{{ e.details }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin:6px 0 0;font-size:14px;line-height:1.5;color:#526b82">{{ e.details }}</p>
+                </sc-if>
               </div>
               <a href="{{ e.href }}" style="display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;background:#0267BD;color:#fff;font-weight:700;font-size:15px;text-decoration:none;border-radius:9px;white-space:nowrap" style-hover="background:#0BA5E9;color:#fff">{{ e.cta }}</a>
             </div>
@@ -130,7 +130,7 @@ class Component extends DCLogic {
       const shiftsAndActions = events.filter((e) => e.type !== 'meeting');
       const list = (shiftsAndActions.length ? shiftsAndActions : events).map((e) => {
         const f = mod.fmtDate(e.start);
-        return { mon: f.mon, day: f.day, title: e.title, meta: mod.fmtWhen(e.start) + ' \u00b7 ' + e.where, isAction: e.type === 'action', source: e.source, href: e.href || '#lookup', cta: e.cta || 'Details' };
+        return { mon: f.mon, day: f.day, title: e.title, meta: mod.fmtWhenRange(e.start, e.end) + ' \u00b7 ' + e.where, details: e.details || '', href: e.href || '#lookup', cta: e.cta || 'Details' };
       });
       this.setState({ events: list });
     });

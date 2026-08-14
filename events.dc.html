@@ -74,8 +74,8 @@ class Component extends DCLogic {
         events: events.map((e) => {
           const f = mod.fmtDate(e.start);
           const dow = e.start.toLocaleString('en-US', { weekday: 'short' });
-          const when = e.start.toLocaleString('en-US', { hour: 'numeric', minute: e.start.getMinutes() ? '2-digit' : undefined });
-          return { mon: f.mon, day: f.day, dow, title: e.title, when, where: e.where, body: e.type === 'meeting' ? 'Open to all. Hear updates and connect with neighbors.' : (e.source ? 'Curated from ' + e.source + '.' : 'Volunteer shift with LD 48.'), cta: e.cta || 'Details', rsvp: e.href || '#' };
+          const when = e.end ? mod.fmtTime(e.start) + ' to ' + mod.fmtTime(e.end) : mod.fmtTime(e.start);
+          return { mon: f.mon, day: f.day, dow, title: e.title, when, where: e.where, body: e.type === 'meeting' ? 'Open to all. Hear updates and connect with neighbors.' : (e.details || 'Volunteer with LD 48.'), cta: e.cta || 'Details', rsvp: e.href || '#' };
         }),
       });
     });
