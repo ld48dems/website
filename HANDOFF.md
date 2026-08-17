@@ -40,6 +40,7 @@ If you'd rather not carry this runtime forward in production, the recommended pa
 - Fonts: **Archivo** (headings, weight 500–900) and **Libre Franklin** (body, weight 400–700), both loaded from Google Fonts in each page's `<helmet>`.
 - All styling is inline (`style="..."`) by convention in this file format , no external stylesheet.
 - Accessibility: skip-to-content link + `:focus-visible` outlines added in `nav.dc.html`/`footer.dc.html` and each page's own `<style>` block; all interactive elements are ≥44px tall.
+- Accessibility review completed August 17, 2026 across all 15 public routes at 1440px desktop and 375px mobile widths. Pages declare English, expose one main landmark and one H1, retain visible keyboard focus, provide labels and image alternatives, meet text contrast checks, and render without horizontal overflow. The mobile menu exposes its expanded state and changes its accessible name between Open menu and Close menu.
 
 ## Managed content
 
@@ -70,9 +71,10 @@ All forms (membership, SMS opt-in, contact, volunteer, home-page email signup) a
 
 ## Remaining owner actions
 
-1. Obtain Google Calendar access from Katie and configure a restricted API key in `assets/events-data.js`.
-2. Complete the shared GitHub repository, Netlify continuous deployment, Identity, Git Gateway, and editor invitations in `CONTENT-EDITOR-SETUP.md`.
-3. Confirm Netlify form-notification recipients in **Forms** > **Form notifications**.
+1. Transfer the `ld48dems-preview` site from the `cockrellio` Netlify workspace to an LD 48-owned Netlify team. The shared `ld48dems/website` repository and continuous deployment from `main` are already connected.
+2. Enable Netlify Identity, invite-only registration, Git Gateway, and editor invitations using `CONTENT-EDITOR-SETUP.md`.
+3. Obtain Google Calendar access from Katie and configure a restricted API key in `assets/events-data.js`.
+4. Confirm Netlify form-notification recipients in **Forms** > **Form notifications**.
 
 Do not add photos or bios beside executive board members. That section is intentionally text-only.
 

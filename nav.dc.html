@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -41,7 +42,7 @@
     </sc-if>
 
     <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
-      <button type="button" aria-label="Open menu" aria-expanded="{{ mobileOpen }}" aria-controls="mobile-menu" onClick="{{ toggleMobile }}" style="display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:48px;height:48px;background:transparent;border:0;cursor:pointer;padding:10px">
+      <button type="button" aria-label="{{ mobileMenuLabel }}" aria-expanded="{{ mobileOpen }}" aria-controls="mobile-menu" onClick="{{ toggleMobile }}" style="display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:48px;height:48px;background:transparent;border:0;cursor:pointer;padding:10px">
         <span style="display:block;height:3px;background:#fff;border-radius:2px"></span>
         <span style="display:block;height:3px;background:#fff;border-radius:2px"></span>
         <span style="display:block;height:3px;background:#fff;border-radius:2px"></span>
@@ -94,6 +95,7 @@ class Component extends DCLogic {
       isDesktop,
       mobileMenuOpen: isMobile && this.state.mobileOpen,
       mobileOpen: this.state.mobileOpen,
+      mobileMenuLabel: this.state.mobileOpen ? 'Close menu' : 'Open menu',
       toggleMobile: () => this.setState(s => ({ mobileOpen: !s.mobileOpen })),
       whoStyle: this.navLink('who'),
       standStyle: this.navLink('stand'),
