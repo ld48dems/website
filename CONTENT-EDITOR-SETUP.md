@@ -1,8 +1,8 @@
-# Content editor setup
+# Content editor status and migration
 
-This is a one-time owner setup. After it is complete, routine website updates happen at `https://www.ld48dems.org/admin/` and publish automatically.
+The browser editor is built, but its current authentication and publishing configuration is specific to the temporary Netlify preview. Netlify is not the intended permanent host.
 
-The preview at `https://ld48dems-preview.netlify.app` already deploys from the shared `ld48dems/website` GitHub repository. It currently belongs to the `cockrellio` Netlify workspace and must be transferred to an LD 48-owned Netlify team before launch. Until Identity and Git Gateway are enabled and editors are invited, the editor login screen may load but editors cannot publish updates.
+The preview at `https://ld48dems-preview.netlify.app` deploys from the shared `ld48dems/website` GitHub repository. The editor interface is at `/admin/`, but it cannot publish unless Netlify Identity and Git Gateway are temporarily activated.
 
 ## What is already built
 
@@ -11,26 +11,25 @@ The preview at `https://ld48dems-preview.netlify.app` already deploys from the s
 - Browser editor for volunteer opportunities.
 - Browser editor for the complete PCO roster.
 - Version history and rollback through GitHub.
-- Automatic Netlify deployment after an editor clicks **Publish**.
+- Automatic Netlify preview deployment after an authenticated editor clicks **Publish**.
 
 Approved future volunteer opportunities use the site's shared event feed. The next 5 appear automatically on the homepage, and the next 8 appear on the Events page.
 
-## One-time setup
+## Permanent editor decision
 
-1. Confirm at least two LD 48 leaders are owners of the `ld48dems/website` GitHub repository.
-2. Create or select an LD 48-owned Netlify team with at least two owners.
-3. Transfer the `ld48dems-preview` Netlify site from the `cockrellio` workspace to the LD 48-owned team.
-4. In Netlify, open **Site configuration** > **Build & deploy** > **Continuous deployment** and confirm the site is linked to `ld48dems/website`, deploys the `main` branch, and uses `.` as the publish directory.
-5. Select **Site configuration** > **Identity** > **Enable Identity**.
-6. Under **Registration preferences**, select **Invite only**.
-7. Under **Services**, enable **Git Gateway**.
-8. Open **Identity** > **Invite users** and invite each approved website editor.
-9. Confirm an invited editor can sign in at `/admin/`, change a test volunteer opportunity, publish it, and see the Netlify deploy complete.
-10. Add the production domain only after ownership, editor publishing, forms, and rollback have been tested.
+Before moving the site to the permanent web host, choose one of these approaches:
+
+1. Keep Decap CMS and add a non-Netlify GitHub OAuth authentication service.
+2. Use a host-native content-management tool that writes the required JSON files.
+3. Use GitHub's browser editor with review before merging.
+4. Assign a technical publisher to make requested updates and deploy releases.
+5. Rebuild in the permanent host's preferred CMS if editors need visual control over every page.
+
+The final admin URL, login method, approval workflow, and deployment behavior depend on this decision. Do not promise `https://www.ld48dems.org/admin/` as the permanent editor until migration testing is complete.
 
 ## Ownership rules
 
-- Keep at least two LD 48 owners on GitHub and Netlify.
+- Keep at least two LD 48 owners on GitHub, the permanent hosting account, and the domain/DNS account.
 - Give editor access only to people authorized to publish for LD 48.
 - Remove access when a volunteer leaves the role.
-- Use the editor for routine content. Do not edit the HTML pages for endorsements, resolutions, volunteer opportunities, or the PCO roster.
+- Keep routine content in the structured JSON files, whether updates happen through Decap CMS, GitHub, or a replacement editor.

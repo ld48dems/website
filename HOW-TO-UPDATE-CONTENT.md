@@ -14,12 +14,12 @@ Example: If seven future events are approved, the first five appear on the homep
 
 ## Before editors can publish
 
-The browser editor is built, but an LD 48 owner must complete the one-time GitHub and Netlify setup in `CONTENT-EDITOR-SETUP.md`. Until that setup is complete, `/admin/` may show a login button but cannot publish content changes.
+The browser editor is built in the temporary Netlify preview, but its current authentication and publishing method will not move automatically to the permanent web host. See `CONTENT-EDITOR-SETUP.md` for the migration options. Until a permanent editor workflow is selected and configured, `/admin/` may show a login button but cannot publish production changes.
 
 ## Sign in
 
-1. Go to `https://www.ld48dems.org/admin/`.
-2. Select **Login with Netlify Identity**.
+1. During preview, go to `https://ld48dems-preview.netlify.app/admin/`.
+2. Sign in only if temporary Netlify Identity access has been activated.
 3. Open **Website content**.
 
 ## Update endorsements

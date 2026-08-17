@@ -2,7 +2,21 @@
 
 ## What this is
 
-This is the deployable LD 48 Democrats website, not a design mockup. It is a static site built from `.dc.html` pages, structured JSON content, and the custom `support.js` runtime. Netlify hosts the public site, processes five forms, and will publish browser-based content edits after the one-time owner setup in `CONTENT-EDITOR-SETUP.md`.
+This is the deployable LD 48 Democrats website, not a design mockup. It is a static site built from `.dc.html` pages, structured JSON content, and the custom `support.js` runtime. Netlify currently provides only the temporary preview, form handling, and preview editor infrastructure. The production site will migrate to LD 48's existing web host.
+
+## Current production hosting
+
+Public hosting research completed August 17, 2026 found:
+
+- `ld48dems.org` resolves to `65.181.111.232`.
+- The server runs LiteSpeed and identifies as `s1355.use1.mysecurecloudhost.com`.
+- The IP is registered to WHG Hosting Services Ltd, also known as World Host Group infrastructure.
+- Domain registry records reference MochaHost nameservers. The provider is likely MochaHost or a MochaHost reseller.
+- Live DNS uses `ns1` through `ns4.mysecurecloudhost.com`.
+- Tucows Domains Inc. is the registrar through OpenSRS.
+- The current WordPress site lives at `/wp/`, and the root domain redirects there.
+
+Public records cannot identify the exact customer account, billing owner, reseller, hosting plan, or control-panel credentials. Confirm those details from invoices, renewal emails, password-manager entries, or the LD 48 payment account before migration.
 
 ## How the files actually work (important)
 Each `NAME.dc.html` file is **not** plain static HTML. It's parsed at runtime by `support.js` (included in this folder), which:
@@ -33,7 +47,7 @@ If you'd rather not carry this runtime forward in production, the recommended pa
 | `privacy.dc.html`, `mobile-terms.dc.html` | Legal | Static content |
 | `nav.dc.html` | (partial) | Shared header/nav, imported via `<dc-import name="nav">` on every page |
 | `footer.dc.html` | (partial) | Shared footer, imported the same way |
-| `admin/index.html` | `/admin/` | Decap CMS browser editor; owner activation is still required |
+| `admin/index.html` | `/admin/` | Temporary Decap CMS interface; permanent authentication and publishing method are not decided |
 
 ## Design system
 - Colors: navy `#011D3E` (primary dark), blue `#0267BD` (CTA/links), light blue `#0BA5E9` (hover/accent), green `#63A434` (secondary accent), light panel `#E1EFF8`.
@@ -44,14 +58,14 @@ If you'd rather not carry this runtime forward in production, the recommended pa
 
 ## Managed content
 
-Routine editors use `/admin/`. The CMS updates these files:
+The temporary preview editor at `/admin/` can update these files after Netlify-specific authentication is activated:
 
 - `assets/content/endorsements.json`
 - `assets/content/resolutions.json`
 - `assets/content/opportunities.json`
 - `assets/pco-roster.json`
 
-Each public page retains embedded fallback data where appropriate. Keep fallback arrays synchronized when changing page architecture. Routine editors should not edit HTML or JSON directly.
+Each public page retains embedded fallback data where appropriate. Keep fallback arrays synchronized when changing page architecture. The permanent host needs a replacement authentication and publishing method for Decap CMS, a host-native editor, or a documented GitHub workflow.
 
 ## Events system (`assets/events-data.js`)
 
@@ -64,17 +78,29 @@ The shared module supplies events to the homepage, events page, and volunteer pa
 Generated meeting dates are labeled as standing-schedule dates until live calendar access is connected.
 
 ## Forms
-All forms (membership, SMS opt-in, contact, volunteer, home-page email signup) are wired for **Netlify Forms**:
+All forms (membership, SMS opt-in, contact, volunteer, home-page email signup) are wired for **Netlify Forms in the temporary preview**:
 - Each `<form>` has `data-netlify="true"`, a `name`, a hidden `form-name` input, and a honeypot field (`bot-field`) for spam.
 - On submit, JS does `fetch('/', { method: 'POST', body: new URLSearchParams(new FormData(form)) })` to Netlify's form-handling endpoint, then shows a success state.
-- **This only works once deployed on Netlify** (or you swap in a different form backend). Netlify auto-detects these forms from the static HTML at deploy time , no server code needed. Submissions + CSV export live in the Netlify site dashboard → Forms tab; email notifications per-form are configured there too (Forms → Form notifications).
+- **This works only on Netlify.** Before migrating, replace it with a PHP endpoint, WordPress form service, or another approved form provider. Test storage, delivery, spam protection, privacy, retention, and SMS consent on the permanent host.
+
+## Migration requirements
+
+1. Confirm the hosting provider, account owner, plan, control panel, SFTP access, domain access, and DNS access.
+2. Back up the current WordPress files and database.
+3. Confirm LiteSpeed serves `.dc.html` files as `text/html`, adding a MIME rule if needed.
+4. Choose the permanent GitHub-to-host deployment method.
+5. Replace Netlify Identity and Git Gateway or select a different editor workflow.
+6. Replace Netlify Forms and test all five forms.
+7. Remove or replace the root redirect to `/wp/`.
+8. Decide whether to retain the old WordPress installation as an archive.
+9. Test HTTPS, routes, forms, editor access, mobile behavior, and rollback before cutover.
 
 ## Remaining owner actions
 
-1. Transfer the `ld48dems-preview` site from the `cockrellio` Netlify workspace to an LD 48-owned Netlify team. The shared `ld48dems/website` repository and continuous deployment from `main` are already connected.
-2. Enable Netlify Identity, invite-only registration, Git Gateway, and editor invitations using `CONTENT-EDITOR-SETUP.md`.
+1. Identify the exact current hosting provider or reseller and obtain account access.
+2. Choose the permanent deployment, editor, and form architecture.
 3. Obtain Google Calendar access from Katie and configure a restricted API key in `assets/events-data.js`.
-4. Confirm Netlify form-notification recipients in **Forms** > **Form notifications**.
+4. Complete backups, migration testing, and production cutover.
 
 Do not add photos or bios beside executive board members. That section is intentionally text-only.
 
