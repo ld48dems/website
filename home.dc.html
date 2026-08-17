@@ -24,6 +24,9 @@
   a{color:#0267BD}
   a:hover{color:#0BA5E9}
   a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px}
+  .home-hero-content{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,64px);align-items:center}
+  .home-hero-photo{display:block;width:100%;height:auto;border-radius:18px;border:1px solid rgba(255,255,255,.22);box-shadow:0 18px 42px rgba(0,0,0,.28)}
+  @media(max-width:800px){.home-hero-content{grid-template-columns:1fr}.home-hero-photo{margin-top:4px}}
 </style>
 </helmet>
 <div style="font-family:'Libre Franklin',system-ui,sans-serif;color:#102a43;background:#fff">
@@ -42,10 +45,13 @@
 
   <!-- HERO -->
   <section style="background:#011D3E;color:#fff;padding:clamp(56px,8vw,88px) 24px clamp(96px,12vw,132px)">
-    <div style="max-width:1100px;margin:0 auto">
-      <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.6px;font-size:13px;font-weight:700;color:#63A434;margin:0 0 16px">48th Legislative District &middot; King County</p>
-      <h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(38px,5.6vw,58px);line-height:1.05;letter-spacing:-1.2px;margin:0 0 20px;max-width:800px;text-wrap:balance">Build Democratic power on the Eastside.</h1>
-      <p style="font-size:clamp(17px,2vw,20px);line-height:1.6;color:#C7DDF0;max-width:620px;margin:0">We are neighbors in Bellevue, Kirkland, and Redmond organizing to elect Democrats, endorse strong local candidates, and win on the issues that shape our community.</p>
+    <div class="home-hero-content">
+      <div>
+        <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.6px;font-size:13px;font-weight:700;color:#63A434;margin:0 0 16px">48th Legislative District &middot; King County</p>
+        <h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(38px,5.6vw,58px);line-height:1.05;letter-spacing:-1.2px;margin:0 0 20px;text-wrap:balance">Build Democratic power on the Eastside.</h1>
+        <p style="font-size:clamp(17px,2vw,20px);line-height:1.6;color:#C7DDF0;margin:0">We are neighbors in Bellevue, Kirkland, and Redmond organizing to elect Democrats, endorse strong local candidates, and win on the issues that shape our community.</p>
+      </div>
+      <img class="home-hero-photo" src="assets/ld48-group-july-4-2026.jpg" alt="LD 48 Democrats and community members gather with campaign signs before a July 4 parade in 2026." width="1800" height="598" fetchpriority="high" decoding="async"/>
     </div>
   </section>
 
