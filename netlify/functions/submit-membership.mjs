@@ -101,7 +101,10 @@ export default async function submitMembership(request) {
       title: error.title,
       detail: error.detail,
     });
-    return jsonResponse(502, { error: 'We could not complete your membership signup. Please try again.' });
+    const detail = typeof error.detail === 'string' && error.detail.trim()
+      ? error.detail.trim()
+      : 'Mailchimp rejected the membership information.';
+    return jsonResponse(502, { error: `We could not complete your membership signup: ${detail}` });
   }
 
   return jsonResponse(200, { ok: true });
