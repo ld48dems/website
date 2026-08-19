@@ -100,10 +100,17 @@ export default async function submitMembership(request) {
       status: response.status,
       title: error.title,
       detail: error.detail,
+      errors: error.errors,
     });
-    const detail = typeof error.detail === 'string' && error.detail.trim()
+    const fieldDetails = Array.isArray(error.errors)
+      ? error.errors
+        .map((item) => [item.field, item.message].filter(Boolean).join(': '))
+        .filter(Boolean)
+        .join('; ')
+      : '';
+    const detail = fieldDetails || (typeof error.detail === 'string' && error.detail.trim()
       ? error.detail.trim()
-      : 'Mailchimp rejected the membership information.';
+      : 'Mailchimp rejected the membership information.');
     return jsonResponse(502, { error: `We could not complete your membership signup: ${detail}` });
   }
 
