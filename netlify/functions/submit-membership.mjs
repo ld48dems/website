@@ -7,7 +7,7 @@ const congressionalDistricts = {
 };
 
 const membershipTypes = {
-  voting: 'Voting member of LD 48 as I am a resident.',
+  voting: 'Voting member of LD 48  as I am a resident.',
   'guest-nonresident': 'Guest at LD 48 meetings as I am not an LD 48 resident.',
   'nonvoting-guest': 'Non-Voting Guest at LD 48 meetings.',
 };
