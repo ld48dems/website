@@ -21,7 +21,7 @@ const MEETING_RULE = {
   title: 'Monthly general meeting',
   where: 'Zoom (link emailed to members)',
   cta: 'Get the Zoom link',
-  href: 'become-member.dc.html',
+  href: 'contact.dc.html',
 };
 
 function nthWeekdayOfMonth(year, month, weekday, nth) {
