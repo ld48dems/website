@@ -26,7 +26,10 @@
   a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px}
   .home-hero-content{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,64px);align-items:center}
   .home-hero-photo{display:block;width:100%;height:auto;border-radius:18px;border:1px solid rgba(255,255,255,.22);box-shadow:0 18px 42px rgba(0,0,0,.28)}
+  .home-door-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  @media(max-width:1000px){.home-door-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:800px){.home-hero-content{grid-template-columns:1fr}.home-hero-photo{margin-top:4px}}
+  @media(max-width:600px){.home-door-grid{grid-template-columns:1fr}}
 </style>
 </helmet>
 <div style="font-family:'Libre Franklin',system-ui,sans-serif;color:#102a43;background:#fff">
@@ -55,9 +58,16 @@
     </div>
   </section>
 
-  <!-- THREE DOORS -->
-  <section aria-label="Ways to get involved" style="background:#fff;padding:0 24px">
-    <div style="max-width:1100px;margin:-72px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;position:relative;z-index:2">
+  <!-- FOUR DOORS -->
+  <section aria-label="Ways to get involved" style="background:#fff;padding:clamp(32px,4vw,48px) 24px 0">
+    <div class="home-door-grid">
+
+      <a href="become-member.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#F0F9E8;border:1px solid #b8d9a0;border-top:5px solid #63A434;border-radius:16px;padding:24px 22px 22px;box-shadow:0 14px 34px rgba(1,29,62,0.1);gap:10px" style-hover="box-shadow:0 20px 44px rgba(1,29,62,0.16);border-color:#63A434">
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#4d842b">Start here</span>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;margin:0;color:#011D3E">Join our LD</h2>
+        <p style="font-size:15.5px;line-height:1.55;color:#3a546e;margin:0">Become a voting member, help shape our priorities, and choose the candidates we endorse.</p>
+        <span style="font-weight:700;color:#0267BD;font-size:16px;margin-top:6px">Become a member &rarr;</span>
+      </a>
 
       <a href="events.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#fff;border:1px solid #d8e6f2;border-radius:16px;padding:28px 26px 26px;box-shadow:0 14px 34px rgba(1,29,62,0.12);gap:10px" style-hover="box-shadow:0 20px 44px rgba(1,29,62,0.18);border-color:#0267BD">
         <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#0267BD">New here</span>
