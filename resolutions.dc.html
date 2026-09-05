@@ -37,6 +37,13 @@
       <!-- ADMIN: resolutions are managed in the content editor. -->
       <div style="display:flex;flex-direction:column;gap:16px">
         <sc-for list="{{ resolutions }}" as="r" hint-placeholder-count="5">
+          <sc-if value="{{ r.showYear }}">
+            <div aria-label="Resolutions from {{ r.year }}" style="display:flex;align-items:center;gap:16px;margin:clamp(18px,4vw,34px) 0 4px">
+              <span aria-hidden="true" style="height:1px;background:#c6dceb;flex:1"></span>
+              <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.5px;color:#33536f;background:#E1EFF8;border-radius:999px;padding:7px 16px;line-height:1">{{ r.year }}</span>
+              <span aria-hidden="true" style="height:1px;background:#c6dceb;flex:1"></span>
+            </div>
+          </sc-if>
           <div style="border:1px solid #d8e6f2;border-radius:16px;padding:clamp(22px,3vw,30px);background:#fff" style-hover="border-color:#0267BD">
             <div style="display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-bottom:12px">
               <span style="display:inline-flex;align-items:center;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.5px;color:#0267BD;background:#E1EFF8;border-radius:999px;padding:5px 12px">{{ r.year }}</span>
@@ -126,11 +133,12 @@ class Component extends DCLogic {
 
   prepare(resolutions) {
     const time = (value) => { const parsed = Date.parse(value); return Number.isNaN(parsed) ? 0 : parsed; };
-    return resolutions
+    const sorted = resolutions
       .slice()
-      .sort((a, b) => time(b.date) - time(a.date))
-      .map((resolution) => ({
+      .sort((a, b) => time(b.date) - time(a.date));
+    return sorted.map((resolution, index) => ({
         ...resolution,
+        showYear: index === 0 || resolution.year !== sorted[index - 1].year,
         linkLabel: resolution.url === 'contact.dc.html' ? 'Request archived copy' : 'Read the full resolution',
       }));
   }
