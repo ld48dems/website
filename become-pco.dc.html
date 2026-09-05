@@ -46,7 +46,10 @@
           <div style="background:#E1EFF8;border-radius:14px;padding:24px;border:1px solid #cfe2f3">
             <div style="width:42px;height:42px;border-radius:11px;background:#011D3E;color:#0BA5E9;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;margin-bottom:14px">{{ s.n }}</div>
             <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;margin:0 0 8px;color:#011D3E">{{ s.title }}</h3>
-            <p style="margin:0;font-size:15px;line-height:1.55;color:#3a546e">{{ s.body }}</p>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:#3a546e">
+              <sc-if value="{{ s.hasLink }}"><a href="{{ s.href }}" target="{{ s.target }}" rel="{{ s.rel }}" style="font-weight:600;color:#0267BD">{{ s.linkText }}</a> {{ s.body }}</sc-if>
+              <sc-if value="{{ s.bodyOnly }}">{{ s.body }}</sc-if>
+            </p>
           </div>
         </sc-for>
       </div>
@@ -230,9 +233,9 @@ class Component extends DCLogic {
         { title: 'Precinct Coordinator', body: 'If your precinct is filled, you can help in a nearby precinct. Precinct Coordinators perform organizing work but do not have PCO voting rights.' },
       ],
       steps: [
-        { n: '1', title: 'Check your precinct', body: 'Use the King County district finder to confirm your precinct and whether the seat is open.' },
-        { n: '2', title: 'Let us know', body: 'Reach out and we will connect you with our PCO coordinator and explain the simple filing process.' },
-        { n: '3', title: 'Get to work', body: 'Meet your neighbors, share party news, and help your precinct turn out to vote.' },
+        { n: '1', title: 'Check your precinct', hasLink: true, bodyOnly: false, linkText: 'Use the King County district finder', href: 'https://experience.arcgis.com/experience/1374a449f39f4cd098643466dab0826a', target: '_blank', rel: 'noopener', body: 'to confirm your precinct and scroll down the page to find out if your precinct\u2019s seat is open.' },
+        { n: '2', title: 'Let us know', hasLink: true, bodyOnly: false, linkText: 'Reach out', href: 'contact.dc.html', target: '', rel: '', body: 'and we will connect you with our PCO coordinator and explain the simple filing process.' },
+        { n: '3', title: 'Get to work', hasLink: false, bodyOnly: true, linkText: '', href: '', target: '', rel: '', body: 'Meet your neighbors, share party news, and help your precinct turn out to vote.' },
       ],
     };
   }
