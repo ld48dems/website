@@ -36,8 +36,8 @@
   <section style="background:#fff;padding:clamp(52px,7vw,88px) 24px">
     <div style="max-width:1100px;margin:0 auto">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
-        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="5">
-          <div style="border:1px solid #d8e6f2;border-radius:18px;padding:clamp(26px,3.5vw,34px);background:#fff;border-top:5px solid {{ p.bar }}" style-hover="box-shadow:0 16px 40px rgba(1,29,62,0.1)">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="6">
+          <div style="border:1px solid {{ p.border }};border-radius:18px;padding:clamp(26px,3.5vw,34px);background:{{ p.background }};border-top:5px solid {{ p.bar }}" style-hover="box-shadow:0 16px 40px rgba(1,29,62,0.1)">
             <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(21px,2.6vw,26px);margin:0 0 14px;color:#011D3E;line-height:1.2">{{ p.title }}</h2>
             <p style="font-size:16px;line-height:1.6;color:#3a546e;margin:0 0 18px">{{ p.lead }}</p>
             <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px">
@@ -79,11 +79,12 @@ class Component extends DCLogic {
   renderVals() {
     return {
       pillars: [
-        { bar: '#0267BD', title: 'Body autonomy', lead: 'Every person deserves the freedom to make decisions about their own body and future.', points: ['Protect the right to abortion and reproductive care in Washington', 'Defend access to contraception and family planning', 'Keep medical decisions between patients and their providers'] },
-        { bar: '#0BA5E9', title: 'Equal healthcare', lead: 'Quality, affordable care for everyone, including trans people and people with uteruses.', points: ['Guarantee gender-affirming care free from political interference', 'Close gaps in maternal and reproductive health outcomes', 'Move toward universal, affordable coverage'] },
-        { bar: '#63A434', title: 'Tax reform', lead: 'A tax code that asks the wealthy to pay their fair share and funds what communities need.', points: ['Make Washington\u2019s tax system fairer and less regressive', 'Fully fund public schools, housing, and transit', 'Protect working families from the rising cost of living'] },
-        { bar: '#074029', title: 'Social justice', lead: 'A community where everyone is treated with dignity and has a real chance to thrive.', points: ['Advance civil rights and protections against discrimination', 'Expand affordable housing and address homelessness', 'Welcome and support immigrants and refugees'] },
-        { bar: '#0267BD', title: 'Criminal justice reform', lead: 'Safety and justice that work for everyone, built on fairness and accountability.', points: ['Invest in prevention, treatment, and community safety', 'End practices that criminalize poverty and addiction', 'Hold the system accountable and reduce racial disparities'] },
+        { bar: '#0267BD', border: '#d8e6f2', background: '#fff', title: 'Body autonomy', lead: 'Every person deserves the freedom to make decisions about their own body and future.', points: ['Protect the right to abortion and reproductive care in Washington', 'Defend access to contraception and family planning', 'Keep medical decisions between patients and their providers'] },
+        { bar: '#0BA5E9', border: '#d8e6f2', background: '#fff', title: 'Equal healthcare', lead: 'Quality, affordable care for everyone, including trans people and people with uteruses.', points: ['Guarantee gender-affirming care free from political interference', 'Close gaps in maternal and reproductive health outcomes', 'Move toward universal, affordable coverage'] },
+        { bar: '#63A434', border: '#d8e6f2', background: '#fff', title: 'Tax reform', lead: 'A tax code that asks the wealthy to pay their fair share and funds what communities need.', points: ['Make Washington\u2019s tax system fairer and less regressive', 'Fully fund public schools, housing, and transit', 'Protect working families from the rising cost of living'] },
+        { bar: '#074029', border: '#d8e6f2', background: '#fff', title: 'Social justice', lead: 'A community where everyone is treated with dignity and has a real chance to thrive.', points: ['Advance civil rights and protections against discrimination', 'Expand affordable housing and address homelessness', 'Welcome and support immigrants and refugees'] },
+        { bar: '#0267BD', border: '#d8e6f2', background: '#fff', title: 'Criminal justice reform', lead: 'Safety and justice that work for everyone, built on fairness and accountability.', points: ['Invest in prevention, treatment, and community safety', 'End practices that criminalize poverty and addiction', 'Hold the system accountable and reduce racial disparities'] },
+        { bar: '#63A434', border: '#9BCB78', background: '#F0F9E8', title: 'Climate change', lead: 'Defend and restore our planet\u2019s ability to nourish life.', points: ['Fund research into climate solutions', 'Increase efficiency of power use', 'Replace coal, oil, and natural gas with non-emitting power sources'] },
       ],
     };
   }
