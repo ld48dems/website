@@ -1,0 +1,52 @@
+name: Deploy to Mochahost staging
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: mochahost-susan
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    environment: mochahost-staging
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v4
+
+      - name: Validate synchronized homepage and component scripts
+        shell: pwsh
+        run: |
+          $home = (Get-FileHash "home.dc.html" -Algorithm SHA256).Hash
+          $index = (Get-FileHash "index.html" -Algorithm SHA256).Hash
+          if ($home -ne $index) {
+            throw "home.dc.html and index.html must remain byte-for-byte identical."
+          }
+          node -e 'const fs=require("fs"); for (const name of fs.readdirSync(".").filter(x => x.endsWith(".dc.html"))) { const text=fs.readFileSync(name,"utf8"); const marker=text.indexOf("data-dc-script"); if(marker<0) continue; const start=text.indexOf(">",marker)+1; const end=text.indexOf("</script>",start); new Function(text.slice(start,end)); }'
+
+      - name: Deploy public files over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.MOCHAHOST_FTP_SERVER }}
+          username: ${{ secrets.MOCHAHOST_FTP_USERNAME }}
+          password: ${{ secrets.MOCHAHOST_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          server-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
+            netlify/**
+            tools/**
+            *.md
+            netlify.toml
+            private-config.template.php

@@ -16,33 +16,34 @@
   a:focus-visible,button:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px;border-radius:4px}
   .skip-link{position:absolute;left:12px;top:-60px;z-index:2000;background:#fff;color:#011D3E;font-weight:700;padding:12px 18px;border-radius:8px;transition:top .15s ease}
   .skip-link:focus{top:12px}
+  @media(max-width:360px){.nav-inner{padding:0 16px!important}.nav-brand{gap:9px!important}.nav-brand img{width:40px!important;height:40px!important}.nav-brand-name{font-size:16px!important}}
 </style>
 </helmet>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <header style="position:sticky;top:0;z-index:1000;background:#011D3E;color:#fff;font-family:'Libre Franklin',system-ui,sans-serif;box-shadow:0 1px 0 rgba(255,255,255,0.08),0 6px 18px rgba(1,29,62,0.35)">
-  <div style="max-width:1240px;margin:0 auto;padding:0 24px;height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+  <div class="nav-inner" style="max-width:1240px;margin:0 auto;padding:0 24px;height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px">
 
-    <a href="home.dc.html" aria-label="LD 48 Democrats home" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;flex-shrink:0" style-hover="color:#fff">
+    <a href="home.dc.html" aria-label="LD 48 Democrats home" class="nav-brand" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;flex-shrink:0" style-hover="color:#fff">
       <img src="assets/ld48-emblem.png" alt="LD 48 Democrats emblem" width="48" height="48" style="display:block;width:48px;height:48px"/>
       <span style="display:flex;flex-direction:column;line-height:1.05">
-        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;letter-spacing:0.2px">LD 48 Democrats</span>
+        <span class="nav-brand-name" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;letter-spacing:0.2px">LD 48 Democrats</span>
       </span>
     </a>
 
     <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
     <nav aria-label="Primary" style="display:flex;align-items:center;gap:4px">
-      <a href="who-we-are.dc.html" style="{{ whoStyle }}">Who we are</a>
-      <a href="where-we-stand.dc.html" style="{{ standStyle }}">Where we stand</a>
-      <a href="endorsements.dc.html" style="{{ endorseStyle }}">Endorsements</a>
-      <a href="events.dc.html" style="{{ eventsStyle }}">Events</a>
-      <a href="get-involved.dc.html" style="{{ involvedStyle }}">Get involved</a>
+      <a href="who-we-are.dc.html" aria-current="{{ whoCurrent }}" style="{{ whoStyle }}">Who we are</a>
+      <a href="where-we-stand.dc.html" aria-current="{{ standCurrent }}" style="{{ standStyle }}">Where we stand</a>
+      <a href="endorsements.dc.html" aria-current="{{ endorseCurrent }}" style="{{ endorseStyle }}">Endorsements</a>
+      <a href="events.dc.html" aria-current="{{ eventsCurrent }}" style="{{ eventsStyle }}">Events</a>
+      <a href="get-involved.dc.html" aria-current="{{ involvedCurrent }}" style="{{ involvedStyle }}">Get involved</a>
       <a href="become-member.dc.html" style="margin-left:12px;display:inline-flex;align-items:center;min-height:44px;padding:0 20px;background:#0267BD;color:#fff;font-weight:700;font-size:15px;text-decoration:none;border-radius:8px;box-shadow:0 4px 14px rgba(2,103,189,0.4)" style-hover="background:#0BA5E9">Join</a>
       <a href="donate.dc.html" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;background:transparent;border:1px solid rgba(255,255,255,0.32);color:#fff;font-weight:700;font-size:15px;text-decoration:none;border-radius:8px" style-hover="border-color:#63A434;color:#63A434">Donate</a>
     </nav>
     </sc-if>
 
     <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
-      <button type="button" aria-label="{{ mobileMenuLabel }}" aria-expanded="{{ mobileOpen }}" aria-controls="mobile-menu" onClick="{{ toggleMobile }}" style="display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:48px;height:48px;background:transparent;border:0;cursor:pointer;padding:10px">
+      <button id="mobile-menu-button" type="button" aria-label="{{ mobileMenuLabel }}" aria-expanded="{{ mobileOpen }}" aria-controls="mobile-menu" onClick="{{ toggleMobile }}" style="display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:48px;height:48px;flex-shrink:0;background:transparent;border:0;cursor:pointer;padding:10px">
         <span style="display:block;height:3px;background:#fff;border-radius:2px"></span>
         <span style="display:block;height:3px;background:#fff;border-radius:2px"></span>
         <span style="display:block;height:3px;background:#fff;border-radius:2px"></span>
@@ -52,11 +53,11 @@
 
   <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
     <nav id="mobile-menu" aria-label="Primary mobile" style="background:#011D3E;border-top:1px solid rgba(255,255,255,0.1);padding:8px 16px 22px">
-      <a href="who-we-are.dc.html" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Who we are</a>
-      <a href="where-we-stand.dc.html" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Where we stand</a>
-      <a href="endorsements.dc.html" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Endorsements</a>
-      <a href="events.dc.html" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Events</a>
-      <a href="get-involved.dc.html" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Get involved</a>
+      <a href="who-we-are.dc.html" aria-current="{{ whoCurrent }}" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Who we are</a>
+      <a href="where-we-stand.dc.html" aria-current="{{ standCurrent }}" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Where we stand</a>
+      <a href="endorsements.dc.html" aria-current="{{ endorseCurrent }}" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Endorsements</a>
+      <a href="events.dc.html" aria-current="{{ eventsCurrent }}" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Events</a>
+      <a href="get-involved.dc.html" aria-current="{{ involvedCurrent }}" style="display:block;padding:14px 8px;color:#fff;text-decoration:none;font-weight:600;font-size:17px;border-bottom:1px solid rgba(255,255,255,0.08)">Get involved</a>
       <div style="display:flex;gap:12px;margin-top:18px">
         <a href="become-member.dc.html" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:52px;background:#0267BD;color:#fff;font-weight:700;font-size:17px;text-decoration:none;border-radius:10px">Join</a>
         <a href="donate.dc.html" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:52px;background:transparent;border:1px solid rgba(255,255,255,0.32);color:#fff;font-weight:700;font-size:17px;text-decoration:none;border-radius:10px">Donate</a>
@@ -71,12 +72,21 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.mq = window.matchMedia('(max-width: 1040px)');
-    this.update = () => this.setState({ isMobile: this.mq.matches, ready: true });
+    this.update = () => this.setState({ isMobile: this.mq.matches, ready: true, mobileOpen: this.mq.matches ? this.state.mobileOpen : false });
+    this.onKeyDown = (event) => {
+      if (event.key === 'Escape' && this.state.mobileOpen) {
+        this.setState({ mobileOpen: false });
+        const button = document.getElementById('mobile-menu-button');
+        if (button) button.focus();
+      }
+    };
     this.update();
     this.mq.addEventListener('change', this.update);
+    document.addEventListener('keydown', this.onKeyDown);
   }
   componentWillUnmount() {
     if (this.mq) this.mq.removeEventListener('change', this.update);
+    if (this.onKeyDown) document.removeEventListener('keydown', this.onKeyDown);
   }
 
   navLink(key) {
@@ -102,6 +112,11 @@ class Component extends DCLogic {
       endorseStyle: this.navLink('endorsements'),
       eventsStyle: this.navLink('events'),
       involvedStyle: this.navLink('involved'),
+      whoCurrent: this.props.current === 'who' ? 'page' : null,
+      standCurrent: this.props.current === 'stand' ? 'page' : null,
+      endorseCurrent: this.props.current === 'endorsements' ? 'page' : null,
+      eventsCurrent: this.props.current === 'events' ? 'page' : null,
+      involvedCurrent: this.props.current === 'involved' ? 'page' : null,
     };
   }
 }

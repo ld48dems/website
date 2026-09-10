@@ -12,14 +12,14 @@ The homepage and Events page use the same event list. You do not add an event se
 
 Example: If seven future events are approved, the first five appear on the homepage and all seven appear on the Events page.
 
-## Before editors can publish
+## Before editors publish
 
-The browser editor is built in the temporary Netlify preview, but its current authentication and publishing method will not move automatically to the permanent web host. See `CONTENT-EDITOR-SETUP.md` for the migration options. Until a permanent editor workflow is selected and configured, `/admin/` may show a login button but cannot publish production changes.
+The browser editor remains on the Netlify preview because it provides authentication and Git Gateway. GitHub Actions deploys approved changes to Mochahost staging after the one-time setup in `MOCHAHOST-DEPLOYMENT.md` is complete.
 
 ## Sign in
 
-1. During preview, go to `https://ld48dems-preview.netlify.app/admin/`.
-2. Sign in only if temporary Netlify Identity access has been activated.
+1. Go to `https://ld48dems-preview.netlify.app/admin/`, or open `/susan/admin/` to be redirected there.
+2. Sign in with your authorized Netlify Identity account.
 3. Open **Website content**.
 
 ## Update endorsements
@@ -72,6 +72,6 @@ The calendar connection is not enabled yet because the Google Calendar API key i
 
 ## Confirm the update
 
-1. Wait for the Netlify notification that the site published successfully.
-2. Open the updated public page in a new browser tab.
-3. Confirm the new text and links are correct.
+1. Wait for the Netlify preview and **Deploy to Mochahost staging** GitHub workflow to finish.
+2. Open the updated page under `https://ld48dems.org/susan/` in a new browser tab.
+3. Confirm the new text, dates, and links are correct on desktop and mobile.

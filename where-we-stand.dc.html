@@ -35,7 +35,7 @@
 
   <section style="background:#fff;padding:clamp(44px,5.5vw,72px) 24px">
     <div style="max-width:1100px;margin:0 auto">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:24px">
         <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="6">
           <div style="border:1px solid {{ p.border }};border-radius:18px;padding:clamp(26px,3.5vw,34px);background:{{ p.background }};border-top:5px solid {{ p.bar }}" style-hover="box-shadow:0 16px 40px rgba(1,29,62,0.1)">
             <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(21px,2.6vw,26px);margin:0 0 14px;color:#011D3E;line-height:1.2">{{ p.title }}</h2>
@@ -56,7 +56,7 @@
   </section>
 
   <section style="background:#E1EFF8;padding:clamp(40px,5.5vw,64px) 24px">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:24px">
       <div style="background:#011D3E;color:#fff;border-radius:18px;padding:clamp(28px,4vw,40px)">
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3.2vw,30px);margin:0 0 12px">Turn values into votes</h2>
         <p style="font-size:16.5px;line-height:1.6;color:#C7DDF0;margin:0 0 24px">Members vote on the endorsements and resolutions that put these priorities into action.</p>

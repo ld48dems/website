@@ -33,22 +33,22 @@
   </section>
 
   <section style="background:#fff;padding:clamp(40px,5.5vw,64px) 24px">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,56px);align-items:start">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(36px,5vw,56px);align-items:start">
 
       <div>
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3.2vw,32px);letter-spacing:-0.4px;margin:0 0 24px;color:#011D3E">Reach the team</h2>
         <div style="display:flex;flex-direction:column;gap:22px">
           <div>
             <div style="font-size:13px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:#0267BD;margin-bottom:5px">General and Chair</div>
-            <a href="mailto:48thdems@gmail.com" style="font-size:18px;color:#011D3E;font-weight:600;text-decoration:none" style-hover="color:#0267BD">48thdems@gmail.com</a>
+            <a href="mailto:48thdems@gmail.com" style="font-size:18px;color:#011D3E;font-weight:600;text-decoration:none;overflow-wrap:anywhere" style-hover="color:#0267BD">48thdems@gmail.com</a>
           </div>
           <div>
             <div style="font-size:13px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:#0267BD;margin-bottom:5px">Membership</div>
-            <a href="mailto:ld48demsmembership@outlook.com" style="font-size:18px;color:#011D3E;font-weight:600;text-decoration:none" style-hover="color:#0267BD">ld48demsmembership@outlook.com</a>
+            <a href="mailto:ld48demsmembership@outlook.com" style="font-size:18px;color:#011D3E;font-weight:600;text-decoration:none;overflow-wrap:anywhere" style-hover="color:#0267BD">ld48demsmembership@outlook.com</a>
           </div>
           <div>
             <div style="font-size:13px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:#0267BD;margin-bottom:5px">Submit an event</div>
-            <a href="mailto:48thdemsevents@gmail.com" style="font-size:18px;color:#011D3E;font-weight:600;text-decoration:none" style-hover="color:#0267BD">48thdemsevents@gmail.com</a>
+            <a href="mailto:48thdemsevents@gmail.com" style="font-size:18px;color:#011D3E;font-weight:600;text-decoration:none;overflow-wrap:anywhere" style-hover="color:#0267BD">48thdemsevents@gmail.com</a>
           </div>
           <div>
             <div style="font-size:13px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:#0267BD;margin-bottom:5px">Mailing address</div>
@@ -72,7 +72,10 @@
           <div role="status" style="background:#f0f8ee;border:1px solid #63A434;border-radius:14px;padding:24px;font-size:17px;color:#011D3E;font-weight:600">Thanks for reaching out. We will get back to you soon.</div>
         </sc-if>
         <sc-if value="{{ open }}" hint-placeholder-val="{{ true }}">
-        <form name="contact" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onSubmit }}" novalidate style="display:flex;flex-direction:column;gap:18px">
+        <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="background:#fff4f2;border:1px solid #b42318;border-radius:10px;padding:14px 16px;color:#7a271a;font-weight:600;line-height:1.5">{{ formError }}</div>
+        </sc-if>
+        <form name="contact" action="./api/forms.php" method="post" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onSubmit }}" novalidate style="display:flex;flex-direction:column;gap:18px">
           <input type="hidden" name="form-name" value="contact"/>
           <p style="display:none"><label>Don't fill this out: <input name="bot-field"/></label></p>
           <div style="display:flex;flex-direction:column">
@@ -91,7 +94,7 @@
             <label for="c-msg" style="display:block;font-size:14.5px;font-weight:600;color:#011D3E;margin-bottom:7px">Message <span style="color:#c0392b">*</span></label>
             <textarea id="c-msg" name="message" required rows="5" style="width:100%;min-height:130px;border:1px solid #c3d6e8;border-radius:10px;padding:13px 16px;font-size:16px;font-family:inherit;color:#102a43;resize:vertical" style-focus="border-color:#0267BD;box-shadow:0 0 0 3px rgba(2,103,189,0.18);outline:none"></textarea>
           </div>
-          <button type="submit" style="align-self:flex-start;min-height:54px;padding:0 34px;border:0;border-radius:11px;background:#0267BD;color:#fff;font-weight:700;font-size:17px;cursor:pointer;font-family:inherit" style-hover="background:#0BA5E9">Send message</button>
+          <button type="submit" disabled="{{ submitting }}" aria-busy="{{ submitting }}" style="align-self:flex-start;min-height:54px;padding:0 34px;border:0;border-radius:11px;background:#0267BD;color:#fff;font-weight:700;font-size:17px;cursor:pointer;font-family:inherit" style-hover="background:#0BA5E9">{{ submitLabel }}</button>
         </form>
         </sc-if>
       </div>
@@ -104,21 +107,29 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { done: false };
+  state = { done: false, submitting: false, formError: '' };
   renderVals() {
     return {
       done: this.state.done,
       open: !this.state.done,
+      submitting: this.state.submitting,
+      submitLabel: this.state.submitting ? 'Sending...' : 'Send message',
+      formError: this.state.formError,
       onSubmit: async (e) => {
         e.preventDefault();
         if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
         const form = e.target;
+        this.setState({ submitting: true, formError: '' });
         try {
-          const response = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
-          if (!response.ok) throw new Error('Submission failed');
-          this.setState({ done: true });
-        } catch {
-          window.alert('We could not send your message. Please try again in a moment.');
+          const isNetlify = window.location.hostname.endsWith('.netlify.app');
+          const response = isNetlify
+            ? await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+            : await fetch('./api/forms.php', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
+          const result = isNetlify ? {} : await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(result.error || 'We could not send your message. Please try again in a moment.');
+          this.setState({ done: true, submitting: false });
+        } catch (error) {
+          this.setState({ submitting: false, formError: error.message || 'We could not send your message. Please try again in a moment.' });
         }
       },
     };

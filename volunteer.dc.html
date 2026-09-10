@@ -36,6 +36,9 @@
   <section style="background:#fff;padding:clamp(44px,6vw,64px) 24px">
     <div style="max-width:1100px;margin:0 auto">
       <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3.2vw,30px);letter-spacing:-0.4px;margin:0 0 20px;color:#011D3E">What's open now</h2>
+      <sc-if value="{{ eventsLoading }}" hint-placeholder-val="{{ false }}">
+        <p role="status" style="margin:0;color:#3a546e;font-size:16px">Loading current opportunities...</p>
+      </sc-if>
       <sc-if value="{{ hasEvents }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;flex-direction:column;gap:14px">
           <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
@@ -57,6 +60,9 @@
             </div>
           </sc-for>
         </div>
+      </sc-if>
+      <sc-if value="{{ noEvents }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;color:#3a546e;font-size:16px;line-height:1.6">No time-specific opportunities are posted right now. Use the volunteer form below and we will match you with the next good fit.</p>
       </sc-if>
     </div>
   </section>
@@ -86,7 +92,10 @@
       </sc-if>
 
       <sc-if value="{{ open }}" hint-placeholder-val="{{ true }}">
-      <form name="volunteer" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onSubmit }}" novalidate style="display:flex;flex-direction:column;gap:20px;background:#fff;border:1px solid #cfe2f3;border-radius:18px;padding:clamp(24px,3.5vw,36px)">
+      <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="background:#fff4f2;border:1px solid #b42318;border-radius:10px;padding:14px 16px;color:#7a271a;font-weight:600;line-height:1.5">{{ formError }}</div>
+      </sc-if>
+      <form name="volunteer" action="./api/forms.php" method="post" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onSubmit }}" novalidate style="display:flex;flex-direction:column;gap:20px;background:#fff;border:1px solid #cfe2f3;border-radius:18px;padding:clamp(24px,3.5vw,36px)">
         <input type="hidden" name="form-name" value="volunteer"/>
         <p style="display:none"><label>Don't fill this out: <input name="bot-field"/></label></p>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
@@ -108,12 +117,12 @@
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
             <sc-for list="{{ interests }}" as="i" hint-placeholder-count="4">
               <label style="display:flex;align-items:center;gap:11px;border:1px solid #c3d6e8;border-radius:10px;padding:13px 14px;cursor:pointer;font-size:15px;color:#102a43" style-hover="border-color:#0267BD;background:#f5faff">
-                <input type="checkbox" name="interest" value="{{ i }}" style="width:20px;height:20px;accent-color:#0267BD;flex-shrink:0"/>{{ i }}
+                <input type="checkbox" name="interest[]" value="{{ i }}" style="width:20px;height:20px;accent-color:#0267BD;flex-shrink:0"/>{{ i }}
               </label>
             </sc-for>
           </div>
         </fieldset>
-        <button type="submit" style="align-self:flex-start;min-height:54px;padding:0 34px;border:0;border-radius:11px;background:#0267BD;color:#fff;font-weight:700;font-size:17px;cursor:pointer;font-family:inherit" style-hover="background:#0BA5E9">Count me in</button>
+        <button type="submit" disabled="{{ submitting }}" aria-busy="{{ submitting }}" style="align-self:flex-start;min-height:54px;padding:0 34px;border:0;border-radius:11px;background:#0267BD;color:#fff;font-weight:700;font-size:17px;cursor:pointer;font-family:inherit" style-hover="background:#0BA5E9">{{ submitLabel }}</button>
       </form>
       </sc-if>
     </div>
@@ -125,7 +134,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { done: false, events: [] };
+  state = { done: false, submitting: false, formError: '', events: [], eventsReady: false };
 
   componentDidMount() {
     import('./assets/events-data.js').then(async (mod) => {
@@ -135,8 +144,8 @@ class Component extends DCLogic {
         const f = mod.fmtDate(e.start);
         return { mon: f.mon, day: f.day, title: e.title, meta: mod.fmtWhenRange(e.start, e.end) + ' \u00b7 ' + e.where, details: e.details || '', href: e.href || '#lookup', cta: e.cta || 'Details' };
       });
-      this.setState({ events: list });
-    });
+      this.setState({ events: list, eventsReady: true });
+    }).catch(() => this.setState({ eventsReady: true }));
   }
 
   renderVals() {
@@ -145,16 +154,26 @@ class Component extends DCLogic {
       open: !this.state.done,
       events: this.state.events,
       hasEvents: this.state.events.length > 0,
+      eventsLoading: !this.state.eventsReady,
+      noEvents: this.state.eventsReady && this.state.events.length === 0,
+      submitting: this.state.submitting,
+      submitLabel: this.state.submitting ? 'Submitting...' : 'Count me in',
+      formError: this.state.formError,
       onSubmit: async (e) => {
         e.preventDefault();
         if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
         const form = e.target;
+        this.setState({ submitting: true, formError: '' });
         try {
-          const response = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
-          if (!response.ok) throw new Error('Submission failed');
-          this.setState({ done: true });
-        } catch {
-          window.alert('We could not submit the volunteer form. Please try again in a moment.');
+          const isNetlify = window.location.hostname.endsWith('.netlify.app');
+          const response = isNetlify
+            ? await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+            : await fetch('./api/forms.php', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
+          const result = isNetlify ? {} : await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(result.error || 'We could not submit the volunteer form. Please try again in a moment.');
+          this.setState({ done: true, submitting: false });
+        } catch (error) {
+          this.setState({ submitting: false, formError: error.message || 'We could not submit the volunteer form. Please try again in a moment.' });
         }
       },
       roles: [

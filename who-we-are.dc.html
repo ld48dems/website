@@ -45,7 +45,7 @@
 
   <!-- MISSION -->
   <section id="mission" style="background:#fff;padding:clamp(40px,5vw,64px) 24px;scroll-margin-top:90px">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(36px,5vw,56px);align-items:start">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(36px,5vw,56px);align-items:start">
       <div>
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 18px;color:#011D3E">Our mission</h2>
         <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0 0 16px">We organize neighbors to elect Democrats, advance progressive values, and make local government work for everyone on the Eastside. We meet every month, welcome newcomers, and turn shared values into wins at the ballot box.</p>
@@ -67,7 +67,7 @@
     <div style="max-width:1100px;margin:0 auto">
       <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 12px;color:#011D3E">What a legislative district organization does</h2>
       <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0 0 36px;max-width:680px">Washington Democrats are organized by legislative district. As the team for the 48th, here is the hands-on work we do.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px">
         <sc-for list="{{ activities }}" as="a" hint-placeholder-count="5">
           <div style="background:#fff;border-radius:14px;padding:24px 22px;border:1px solid #cfe2f3">
             <div style="width:44px;height:44px;border-radius:11px;background:#011D3E;color:#0BA5E9;display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;margin-bottom:16px">{{ a.n }}</div>
@@ -106,7 +106,7 @@
         <sc-for list="{{ officialGroups }}" as="g" hint-placeholder-count="2">
           <div>
             <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;margin:0 0 16px;color:#0267BD;letter-spacing:0.3px">{{ g.title }}</h3>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:16px">
               <sc-for list="{{ g.people }}" as="p" hint-placeholder-count="3">
                 <div style="background:#fff;border:1px solid #cfe2f3;border-radius:14px;padding:20px;display:flex;gap:16px;align-items:center">
                   <img data-official-photo="{{ p.photo }}" alt="Portrait of {{ p.name }}" style="width:56px;height:56px;border-radius:50%;flex-shrink:0;object-fit:cover;object-position:center top"/>
@@ -126,7 +126,7 @@
 
   <!-- PCOS -->
   <section id="pcos" style="background:#fff;padding:clamp(40px,5vw,64px) 24px;scroll-margin-top:90px">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(36px,5vw,56px);align-items:center">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(36px,5vw,56px);align-items:center">
       <div>
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 18px;color:#011D3E">Precinct committee officers</h2>
         <p style="font-size:18px;line-height:1.65;color:#3a546e;margin:0 0 16px">PCOs are the only party officials elected directly by voters. They know their precinct, talk with neighbors about elections, help turn out the vote, and represent their precinct within the district party.</p>

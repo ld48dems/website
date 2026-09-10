@@ -47,7 +47,7 @@ a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input
   <section style="background:#E1EFF8;padding:clamp(32px,4vw,48px) 24px;border-bottom:1px solid #cfe2f3">
     <div style="max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:16px">
       <p style="margin:0;font-size:16px;line-height:1.6;color:#011D3E;font-weight:700;background:#fff;border-left:4px solid #0267BD;border-radius:0 10px 10px 0;padding:14px 18px">Voting membership for eligible people begins 20 days after signing up via the form below.</p>
-      <p style="margin:0;font-size:16px;line-height:1.6;color:#3a546e">Questions? Contact Catherine at <a href="mailto:ld48demsmembership@outlook.com" style="color:#0267BD;font-weight:600">ld48demsmembership@outlook.com</a> or the Chair at <a href="mailto:48thDems@gmail.com" style="color:#0267BD;font-weight:600">48thDems@gmail.com</a>.</p>
+      <p style="margin:0;font-size:16px;line-height:1.6;color:#3a546e">Questions? Contact Catherine at <a href="mailto:ld48demsmembership@outlook.com" style="color:#0267BD;font-weight:600;overflow-wrap:anywhere">ld48demsmembership@outlook.com</a> or the Chair at <a href="mailto:48thDems@gmail.com" style="color:#0267BD;font-weight:600">48thDems@gmail.com</a>.</p>
       <p style="margin:0;font-size:16px;line-height:1.6;color:#011D3E;font-weight:700;background:#fff;border-left:4px solid #63A434;border-radius:0 10px 10px 0;padding:14px 18px">No donation is required to become a member. Suggested donations are $48 annually per person or $25 for Young Dems. Monthly donations are welcome. <a href="https://secure.actblue.com/donate/ld48dems" style="color:#0267BD">Donate here</a>.</p>
       <p style="margin:0;font-size:16px;line-height:1.6;color:#3a546e">You will answer two questions to affirm your residency and your intent to become a voting member.</p>
       <p style="margin:0;font-size:16px;line-height:1.6;color:#3a546e">We ask for your precinct number and congressional district during signup. Use the lookup below, or open the <a href="https://experience.arcgis.com/experience/1374a449f39f4cd098643466dab0826a" target="_blank" rel="noopener" style="color:#0267BD;font-weight:600">official district finder</a>.</p>
@@ -97,7 +97,10 @@ a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input
       </sc-if>
 
       <sc-if value="{{ memberOpen }}" hint-placeholder-val="{{ true }}">
-      <form name="membership" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onMember }}" novalidate style="display:flex;flex-direction:column;gap:22px">
+      <sc-if value="{{ memberError }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="background:#fff4f2;border:1px solid #b42318;border-radius:10px;padding:14px 16px;color:#7a271a;font-weight:600;line-height:1.5">{{ memberError }}</div>
+      </sc-if>
+      <form name="membership" action="./api/forms.php" method="post" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onMember }}" novalidate style="display:flex;flex-direction:column;gap:22px">
         <input type="hidden" name="form-name" value="membership"/>
         <p style="display:none"><label>Don't fill this out: <input name="bot-field"/></label></p>
 
@@ -111,12 +114,12 @@ a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px">
           <div style="display:flex;flex-direction:column">
-            <label for="m-first" style="display:block;font-size:14.5px;font-weight:600;color:#011D3E;margin-bottom:7px">First Name</label>
-            <input id="m-first" name="first_name" type="text" autocomplete="given-name" style="width:100%;min-height:50px;border:1px solid #c3d6e8;border-radius:10px;padding:0 16px;font-size:16px;font-family:inherit;color:#102a43;background:#fff" style-focus="border-color:#0267BD;box-shadow:0 0 0 3px rgba(2,103,189,0.18);outline:none"/>
+            <label for="m-first" style="display:block;font-size:14.5px;font-weight:600;color:#011D3E;margin-bottom:7px">First Name <span style="color:#c0392b">*</span></label>
+            <input id="m-first" name="first_name" type="text" required autocomplete="given-name" style="width:100%;min-height:50px;border:1px solid #c3d6e8;border-radius:10px;padding:0 16px;font-size:16px;font-family:inherit;color:#102a43;background:#fff" style-focus="border-color:#0267BD;box-shadow:0 0 0 3px rgba(2,103,189,0.18);outline:none"/>
           </div>
           <div style="display:flex;flex-direction:column">
-            <label for="m-last" style="display:block;font-size:14.5px;font-weight:600;color:#011D3E;margin-bottom:7px">Last Name</label>
-            <input id="m-last" name="last_name" type="text" autocomplete="family-name" style="width:100%;min-height:50px;border:1px solid #c3d6e8;border-radius:10px;padding:0 16px;font-size:16px;font-family:inherit;color:#102a43;background:#fff" style-focus="border-color:#0267BD;box-shadow:0 0 0 3px rgba(2,103,189,0.18);outline:none"/>
+            <label for="m-last" style="display:block;font-size:14.5px;font-weight:600;color:#011D3E;margin-bottom:7px">Last Name <span style="color:#c0392b">*</span></label>
+            <input id="m-last" name="last_name" type="text" required autocomplete="family-name" style="width:100%;min-height:50px;border:1px solid #c3d6e8;border-radius:10px;padding:0 16px;font-size:16px;font-family:inherit;color:#102a43;background:#fff" style-focus="border-color:#0267BD;box-shadow:0 0 0 3px rgba(2,103,189,0.18);outline:none"/>
           </div>
         </div>
 
@@ -193,7 +196,7 @@ a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input
 
         <p style="margin:0;font-size:14px;line-height:1.6;color:#3a546e">By signing up to be a member, you are consenting to receive communications from the LD 48 Democrats.</p>
 
-        <button type="submit" style="align-self:flex-start;min-height:56px;padding:0 40px;border:0;border-radius:12px;background:#0267BD;color:#fff;font-weight:700;font-size:18px;cursor:pointer;font-family:inherit;box-shadow:0 10px 26px rgba(2,103,189,0.35)" style-hover="background:#0BA5E9">Join LD 48</button>
+        <button type="submit" disabled="{{ memberSubmitting }}" aria-busy="{{ memberSubmitting }}" style="align-self:flex-start;min-height:56px;padding:0 40px;border:0;border-radius:12px;background:#0267BD;color:#fff;font-weight:700;font-size:18px;cursor:pointer;font-family:inherit;box-shadow:0 10px 26px rgba(2,103,189,0.35)" style-hover="background:#0BA5E9">{{ memberSubmitLabel }}</button>
         <p style="margin:0;font-size:13px;color:#5f748a">Required fields are marked with an asterisk.</p>
       </form>
       </sc-if>
@@ -219,10 +222,13 @@ a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input
       </sc-if>
 
       <sc-if value="{{ smsOpen }}" hint-placeholder-val="{{ true }}">
-      <form name="sms-optin" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onSms }}" novalidate style="display:flex;flex-direction:column;gap:20px">
+      <sc-if value="{{ smsError }}" hint-placeholder-val="{{ false }}">
+        <div role="alert" style="background:#fff4f2;border:1px solid #fda29b;border-radius:10px;padding:14px 16px;color:#fff;font-weight:600;line-height:1.5">{{ smsError }}</div>
+      </sc-if>
+      <form name="sms-optin" action="./api/forms.php" method="post" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onSms }}" novalidate style="display:flex;flex-direction:column;gap:20px">
         <input type="hidden" name="form-name" value="sms-optin"/>
         <p style="display:none"><label>Don't fill this out: <input name="bot-field"/></label></p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:20px">
           <div style="display:flex;flex-direction:column">
             <label for="s-name" style="display:block;font-size:14.5px;font-weight:600;color:#9FD7F5;margin-bottom:7px">Your name</label>
             <input id="s-name" name="sms_name" type="text" style="width:100%;min-height:50px;border:1px solid rgba(255,255,255,0.22);border-radius:10px;padding:0 16px;font-size:16px;font-family:inherit;color:#fff;background:rgba(255,255,255,0.06)" style-focus="border-color:#0BA5E9;box-shadow:0 0 0 3px rgba(11,165,233,0.25);outline:none"/>
@@ -241,7 +247,7 @@ a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input
           <span style="font-size:16px;font-weight:600;color:#fff">Sign me up for SMS texts</span>
         </label>
         <p style="margin:0;font-size:13.5px;line-height:1.6;color:#9FC6E6;max-width:680px">By selecting this checkbox you agree to receive up to 2 text messages per day from the 48th Legislative District Democrats. Campaigns provide updates, event invitations, donation asks, and voting reminders. Message and data rates may apply. Text HELP for more information. Text STOP to stop receiving messages. See our <a href="mobile-terms.dc.html" style="color:#0BA5E9;font-weight:600">Terms</a> and <a href="privacy.dc.html" style="color:#0BA5E9;font-weight:600">Privacy Policy</a>.</p>
-        <button type="submit" style="align-self:flex-start;min-height:52px;padding:0 32px;border:0;border-radius:10px;background:#63A434;color:#04210f;font-weight:700;font-size:17px;cursor:pointer;font-family:inherit" style-hover="background:#72bd3d">Sign up for texts</button>
+        <button type="submit" disabled="{{ smsSubmitting }}" aria-busy="{{ smsSubmitting }}" style="align-self:flex-start;min-height:52px;padding:0 32px;border:0;border-radius:10px;background:#63A434;color:#04210f;font-weight:700;font-size:17px;cursor:pointer;font-family:inherit" style-hover="background:#72bd3d">{{ smsSubmitLabel }}</button>
       </form>
       </sc-if>
     </div>
@@ -254,7 +260,8 @@ a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
 class Component extends DCLogic {
   state = {
-    email: '', emailInvalid: false, memberDone: false, smsDone: false,
+    email: '', emailInvalid: false, memberDone: false, memberSubmitting: false, memberError: '',
+    smsDone: false, smsSubmitting: false, smsError: '',
     lookupAddress: '', lookupCity: '', lookupZip: '', lookupMessage: '',
     memberAddress: '', memberCity: '', memberZip: '', congressionalDistrict: '', precinct: '',
   };
@@ -266,8 +273,14 @@ class Component extends DCLogic {
       emailInvalid: this.state.emailInvalid,
       memberDone: this.state.memberDone,
       memberOpen: !this.state.memberDone,
+      memberSubmitting: this.state.memberSubmitting,
+      memberSubmitLabel: this.state.memberSubmitting ? 'Joining...' : 'Join LD 48',
+      memberError: this.state.memberError,
       smsDone: this.state.smsDone,
       smsOpen: !this.state.smsDone,
+      smsSubmitting: this.state.smsSubmitting,
+      smsSubmitLabel: this.state.smsSubmitting ? 'Submitting...' : 'Sign up for texts',
+      smsError: this.state.smsError,
       lookupAddress: this.state.lookupAddress,
       lookupCity: this.state.lookupCity,
       lookupZip: this.state.lookupZip,
@@ -292,28 +305,35 @@ class Component extends DCLogic {
           return;
         }
         const form = e.target;
+        this.setState({ memberSubmitting: true, memberError: '' });
         try {
-          const response = await fetch('/api/submit-membership', { method: 'POST', body: new FormData(form) });
+          const isNetlify = window.location.hostname.endsWith('.netlify.app');
+          const response = await fetch(isNetlify ? '/api/submit-membership' : './api/forms.php', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
           if (!response.ok) {
             const result = await response.json().catch(() => ({}));
-            throw new Error(result.error || 'Submission failed');
+            throw new Error(result.error || 'We could not submit the membership form. Please try again in a moment.');
           }
-          this.setState({ memberDone: true });
+          this.setState({ memberDone: true, memberSubmitting: false });
           window.scrollTo({ top: 0, behavior: 'auto' });
         } catch (error) {
-          window.alert(error.message || 'We could not submit the membership form. Please try again in a moment.');
+          this.setState({ memberSubmitting: false, memberError: error.message || 'We could not submit the membership form. Please try again in a moment.' });
         }
       },
       onSms: async (e) => {
         e.preventDefault();
         if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
         const form = e.target;
+        this.setState({ smsSubmitting: true, smsError: '' });
         try {
-          const response = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
-          if (!response.ok) throw new Error('Submission failed');
-          this.setState({ smsDone: true });
-        } catch {
-          window.alert('We could not submit the SMS form. Please try again in a moment.');
+          const isNetlify = window.location.hostname.endsWith('.netlify.app');
+          const response = isNetlify
+            ? await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+            : await fetch('./api/forms.php', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
+          const result = isNetlify ? {} : await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(result.error || 'We could not submit the SMS form. Please try again in a moment.');
+          this.setState({ smsDone: true, smsSubmitting: false });
+        } catch (error) {
+          this.setState({ smsSubmitting: false, smsError: error.message || 'We could not submit the SMS form. Please try again in a moment.' });
         }
       },
       affirmations: [

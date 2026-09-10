@@ -1,8 +1,8 @@
-# Content editor status and migration
+# Content editor and production publishing
 
-The browser editor is built, but its current authentication and publishing configuration is specific to the temporary Netlify preview. Netlify is not the intended permanent host.
+The browser editor uses Netlify Identity and Git Gateway at `https://ld48dems-preview.netlify.app/admin/`. Published edits commit structured content to GitHub `main`.
 
-The preview at `https://ld48dems-preview.netlify.app` deploys from the shared `ld48dems/website` GitHub repository. The editor interface is at `/admin/`, but it cannot publish unless Netlify Identity and Git Gateway are temporarily activated.
+The GitHub workflow `.github/workflows/deploy-mochahost.yml` deploys validated changes from `main` to Mochahost's `/public_html/susan/` directory. The production `/susan/admin/` route redirects authorized editors to the Netlify-hosted editor. Complete the one-time GitHub environment-secret setup in `MOCHAHOST-DEPLOYMENT.md` before relying on automatic publishing.
 
 ## What is already built
 
@@ -12,20 +12,19 @@ The preview at `https://ld48dems-preview.netlify.app` deploys from the shared `l
 - Browser editor for the complete PCO roster.
 - Version history and rollback through GitHub.
 - Automatic Netlify preview deployment after an authenticated editor clicks **Publish**.
+- Automatic Mochahost staging deployment from GitHub after the deployment environment is configured.
 
 Approved future volunteer opportunities use the site's shared event feed. The next 5 appear automatically on the homepage, and the next 8 appear on the Events page.
 
-## Permanent editor decision
+## Publishing flow
 
-Before moving the site to the permanent web host, choose one of these approaches:
+1. An authorized editor selects **Publish** in Decap CMS.
+2. Git Gateway commits the JSON change to GitHub `main`.
+3. Netlify updates the preview.
+4. GitHub Actions validates the site and deploys public files to Mochahost staging.
+5. The editor verifies the change at `https://ld48dems.org/susan/`.
 
-1. Keep Decap CMS and add a non-Netlify GitHub OAuth authentication service.
-2. Use a host-native content-management tool that writes the required JSON files.
-3. Use GitHub's browser editor with review before merging.
-4. Assign a technical publisher to make requested updates and deploy releases.
-5. Rebuild in the permanent host's preferred CMS if editors need visual control over every page.
-
-The final admin URL, login method, approval workflow, and deployment behavior depend on this decision. Do not promise `https://www.ld48dems.org/admin/` as the permanent editor until migration testing is complete.
+If the Netlify preview is retired later, replace authentication before removing it. The structured JSON files and GitHub deployment workflow can remain unchanged.
 
 ## Ownership rules
 

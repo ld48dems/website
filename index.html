@@ -29,7 +29,7 @@
   .home-door-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
   @media(max-width:1000px){.home-door-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:800px){.home-hero-content{grid-template-columns:1fr}.home-hero-photo{margin-top:4px}}
-  @media(max-width:600px){.home-door-grid{grid-template-columns:1fr}}
+  @media(max-width:600px){.home-door-grid,.home-name-grid{grid-template-columns:1fr!important}}
 </style>
 </helmet>
 <div style="font-family:'Libre Franklin',system-ui,sans-serif;color:#102a43;background:#fff">
@@ -63,7 +63,7 @@
     <div class="home-door-grid">
 
       <a href="become-member.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#F0F9E8;border:1px solid #b8d9a0;border-top:5px solid #63A434;border-radius:16px;padding:24px 22px 22px;box-shadow:0 14px 34px rgba(1,29,62,0.1);gap:10px" style-hover="box-shadow:0 20px 44px rgba(1,29,62,0.16);border-color:#63A434">
-        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#4d842b">Start here</span>
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#3f7123">Start here</span>
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;margin:0;color:#011D3E">Join our LD</h2>
         <p style="font-size:15.5px;line-height:1.55;color:#3a546e;margin:0">Become a voting member, help shape our priorities, and choose the candidates we endorse.</p>
         <span style="font-weight:700;color:#0267BD;font-size:16px;margin-top:6px">Become a member &rarr;</span>
@@ -80,7 +80,7 @@
         <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:#63A434">Ready to help</span>
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:24px;margin:0;color:#fff">Get involved</h2>
         <p style="font-size:15.5px;line-height:1.55;color:#C7DDF0;margin:0">{{ middleDoorBody }}</p>
-        <span style="display:inline-flex;align-items:center;min-height:44px;padding:0 20px;background:#0267BD;color:#fff;font-weight:700;font-size:15.5px;border-radius:9px;margin-top:8px;align-self:flex-start">{{ middleDoorCta }}</span>
+        <span style="font-weight:700;color:#9FD7F5;font-size:16px;margin-top:6px">{{ middleDoorCta }} &rarr;</span>
       </a>
 
       <a href="become-pco.dc.html" style="display:flex;flex-direction:column;text-decoration:none;background:#fff;border:1px solid #d8e6f2;border-radius:16px;padding:28px 26px 26px;box-shadow:0 14px 34px rgba(1,29,62,0.12);gap:10px" style-hover="box-shadow:0 20px 44px rgba(1,29,62,0.18);border-color:#0267BD">
@@ -115,7 +115,7 @@
   <!-- WHY IT MATTERS -->
   <section style="background:#011D3E;color:#fff;padding:clamp(48px,6vw,72px) 24px;position:relative;overflow:hidden;margin-top:clamp(40px,5vw,56px)">
     <div style="position:absolute;inset:0;background:radial-gradient(90% 120% at 0% 100%, rgba(7,64,41,0.6), transparent 55%);pointer-events:none"></div>
-    <div style="position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,64px);align-items:center">
+    <div style="position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(36px,5vw,64px);align-items:center">
       <div>
         <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;font-weight:700;color:#63A434;margin:0 0 14px">Why it matters now</p>
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,4.4vw,46px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 20px">2026 is a defining year for Washington.</h2>
@@ -132,7 +132,7 @@
 
   <!-- FIND YOUR DISTRICT -->
   <section style="background:#E1EFF8;padding:clamp(40px,5vw,60px) 24px">
-    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,56px);align-items:center">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(32px,5vw,56px);align-items:center">
       <div>
         <p style="font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;font-weight:700;color:#0267BD;margin:0 0 14px">Find your district</p>
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(30px,4.4vw,46px);line-height:1.08;letter-spacing:-0.6px;margin:0 0 18px;color:#011D3E">Are you in the 48th?</h2>
@@ -145,7 +145,7 @@
 
   <!-- EVENTS + ENDORSEMENTS -->
   <section style="background:#fff;padding:clamp(40px,5vw,60px) 24px clamp(44px,6vw,72px)">
-    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,56px)">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(36px,5vw,56px)">
       <div>
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:26px">
           <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,3.6vw,38px);letter-spacing:-0.5px;margin:0;color:#011D3E">Upcoming events</h2>
@@ -191,7 +191,7 @@
 
   <!-- SIGNUP -->
   <section style="background:#E1EFF8;padding:clamp(48px,6vw,72px) 24px">
-    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,56px);align-items:start">
+    <div style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(32px,5vw,56px);align-items:start">
 
       <div style="background:#011D3E;color:#fff;border-radius:20px;padding:clamp(30px,4vw,44px)">
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(26px,3.4vw,34px);letter-spacing:-0.5px;margin:0 0 12px">Stay in the loop</h2>
@@ -200,12 +200,25 @@
           <div role="status" style="background:rgba(99,164,52,0.18);border:1px solid #63A434;border-radius:12px;padding:18px 20px;font-size:16px;font-weight:600">Thanks for joining our list. Watch your inbox for a confirmation.</div>
         </sc-if>
         <sc-if value="{{ emailOpen }}" hint-placeholder-val="{{ true }}">
-        <form name="home-email-signup" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onEmail }}" style="display:flex;flex-direction:column;gap:14px">
+        <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="background:#fff4f2;border:1px solid #fda29b;border-radius:10px;padding:14px 16px;color:#fff;font-weight:600;line-height:1.5">{{ emailError }}</div>
+        </sc-if>
+        <form name="home-email-signup" action="./api/forms.php" method="post" data-netlify="true" netlify-honeypot="bot-field" onSubmit="{{ onEmail }}" style="display:flex;flex-direction:column;gap:14px">
           <input type="hidden" name="form-name" value="home-email-signup"/>
           <p style="display:none"><label>Don't fill this out: <input name="bot-field"/></label></p>
+          <div class="home-name-grid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label for="home-first" style="font-size:14px;font-weight:600;color:#9FD7F5">First name</label>
+              <input id="home-first" name="first_name" type="text" required autocomplete="given-name" style="min-height:52px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:#fff;padding:0 16px;font-size:16px;font-family:inherit"/>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <label for="home-last" style="font-size:14px;font-weight:600;color:#9FD7F5">Last name</label>
+              <input id="home-last" name="last_name" type="text" required autocomplete="family-name" style="min-height:52px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:#fff;padding:0 16px;font-size:16px;font-family:inherit"/>
+            </div>
+          </div>
           <label for="home-email" style="font-size:14px;font-weight:600;color:#9FD7F5">Email address</label>
           <input id="home-email" name="email" type="email" required="" placeholder="you@email.com" style="min-height:52px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:#fff;padding:0 16px;font-size:16px;font-family:inherit"/>
-          <button type="submit" style="min-height:52px;border:0;border-radius:10px;background:#63A434;color:#04210f;font-weight:700;font-size:17px;cursor:pointer;font-family:inherit" style-hover="background:#72bd3d">Join the mailing list</button>
+          <button type="submit" disabled="{{ emailSubmitting }}" aria-busy="{{ emailSubmitting }}" style="min-height:52px;border:0;border-radius:10px;background:#63A434;color:#04210f;font-weight:700;font-size:17px;cursor:pointer;font-family:inherit" style-hover="background:#72bd3d">{{ emailSubmitLabel }}</button>
         </form>
         </sc-if>
       </div>
@@ -225,7 +238,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { emailDone: false, events: [], nextMeetingLine: '' };
+  state = { emailDone: false, emailSubmitting: false, emailError: '', events: [], nextMeetingLine: '' };
 
   componentDidMount() {
     import('./assets/events-data.js').then(async (mod) => {
@@ -245,19 +258,28 @@ class Component extends DCLogic {
     return {
       emailDone: this.state.emailDone,
       emailOpen: !this.state.emailDone,
+      emailSubmitting: this.state.emailSubmitting,
+      emailSubmitLabel: this.state.emailSubmitting ? 'Joining...' : 'Join the mailing list',
+      emailError: this.state.emailError,
       events: this.state.events,
       nextMeetingLine: this.state.nextMeetingLine,
       middleDoorBody: 'Doors, phones, tabling, or a partner action we\u2019ve vetted this week. Whatever fits your Saturday.',
       middleDoorCta: 'See what\u2019s open',
       onEmail: async (e) => {
         e.preventDefault();
+        if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
         const form = e.target;
+        this.setState({ emailSubmitting: true, emailError: '' });
         try {
-          const response = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
-          if (!response.ok) throw new Error('Submission failed');
-          this.setState({ emailDone: true });
-        } catch {
-          window.alert('We could not submit the form. Please try again in a moment.');
+          const isNetlify = window.location.hostname.endsWith('.netlify.app');
+          const response = isNetlify
+            ? await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
+            : await fetch('./api/forms.php', { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
+          const result = isNetlify ? {} : await response.json().catch(() => ({}));
+          if (!response.ok) throw new Error(result.error || 'We could not join the mailing list. Please try again in a moment.');
+          this.setState({ emailDone: true, emailSubmitting: false });
+        } catch (error) {
+          this.setState({ emailSubmitting: false, emailError: error.message || 'We could not join the mailing list. Please try again in a moment.' });
         }
       },
       activities: [

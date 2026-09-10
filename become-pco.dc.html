@@ -66,7 +66,7 @@
 
       <div style="background:#E1EFF8;border:1px solid #cfe2f3;border-radius:18px;padding:clamp(26px,4vw,38px);margin-bottom:28px">
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,3vw,28px);margin:0 0 16px;color:#011D3E">Applications, training, and outreach tools</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 24px;font-size:15.5px;line-height:1.5">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px 24px;font-size:15.5px;line-height:1.5">
           <a href="https://www.kcdems.org/get-involved/become-a-pco/" target="_blank" rel="noopener" style="font-weight:700;color:#0267BD">Apply for an appointment online</a>
           <a href="https://kingcounty.gov/en/dept/elections/for-candidates/online-pco-filing" target="_blank" rel="noopener" style="font-weight:700;color:#0267BD">King County online PCO filing</a>
           <a href="https://drive.google.com/file/d/1YpwKgnmx1ekPe5XCN6flo5jVXkHVP99G/view" target="_blank" rel="noopener" style="font-weight:700;color:#0267BD">Download the PCO application</a>
@@ -98,7 +98,7 @@
           <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,3vw,28px);margin:0;color:#011D3E">Complete PCO roster</h2>
           <span style="font-size:14px;color:#5f748a">{{ rosterCount }} precincts</span>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:10px">
           <sc-for list="{{ roster }}" as="p" hint-placeholder-count="6">
             <div style="border:1px solid #d8e6f2;border-radius:10px;padding:14px 16px;background:#fff;min-width:0">
               <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;color:#0267BD">{{ p.precinct }}</div>

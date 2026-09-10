@@ -17,7 +17,7 @@
 <meta property="og:description" content="Monthly meetings, canvasses, and community events with the 48th Legislative District Democrats. Everyone is welcome."/>
 <meta property="og:image" content="assets/ld48-emblem.png"/>
 <meta property="og:type" content="website"/>
-<style>*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:#fff}a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px}</style>
+<style>*{box-sizing:border-box}html,body{margin:0;padding:0}body{background:#fff}a{color:#0267BD}a:hover{color:#0BA5E9}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #0BA5E9;outline-offset:2px}@media(max-width:520px){.event-card{grid-template-columns:1fr!important}.event-card>a{width:100%}}</style>
 </helmet>
 <div style="font-family:'Libre Franklin',system-ui,sans-serif;color:#102a43;background:#fff">
 
@@ -34,10 +34,14 @@
 
   <section style="background:#fff;padding:clamp(40px,5.5vw,64px) 24px">
     <div style="max-width:1100px;margin:0 auto">
-      <!-- ADMIN: edit the `events` array in this component's logic to add or change events -->
+      <!-- ADMIN: manage approved opportunities in the website content editor. -->
+      <sc-if value="{{ eventsLoading }}" hint-placeholder-val="{{ false }}">
+        <p role="status" style="margin:0;color:#3a546e;font-size:16px">Loading upcoming events...</p>
+      </sc-if>
+      <sc-if value="{{ hasEvents }}" hint-placeholder-val="{{ true }}">
       <div style="display:flex;flex-direction:column;gap:18px">
         <sc-for list="{{ events }}" as="e" hint-placeholder-count="5">
-          <div style="border:1px solid #d8e6f2;border-radius:16px;padding:clamp(20px,3vw,28px);display:grid;grid-template-columns:auto 1fr auto;gap:clamp(18px,3vw,28px);align-items:center" style-hover="border-color:#0267BD;box-shadow:0 10px 30px rgba(1,29,62,0.08)">
+          <div class="event-card" style="border:1px solid #d8e6f2;border-radius:16px;padding:clamp(20px,3vw,28px);display:grid;grid-template-columns:auto 1fr auto;gap:clamp(18px,3vw,28px);align-items:center" style-hover="border-color:#0267BD;box-shadow:0 10px 30px rgba(1,29,62,0.08)">
             <div style="text-align:center;background:#011D3E;color:#fff;border-radius:12px;padding:14px 16px;min-width:84px">
               <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:1px;color:#0BA5E9;text-transform:uppercase">{{ e.mon }}</div>
               <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:34px;line-height:1">{{ e.day }}</div>
@@ -52,6 +56,13 @@
           </div>
         </sc-for>
       </div>
+      </sc-if>
+      <sc-if value="{{ noEvents }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid #d8e6f2;border-radius:16px;padding:24px;background:#fff">
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:22px;margin:0 0 8px;color:#011D3E">No additional events are posted yet</h2>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:#3a546e">Our monthly general meeting still happens on the standing schedule below. Check back soon or <a href="contact.dc.html" style="font-weight:700;color:#0267BD">contact us</a> for the latest details.</p>
+        </div>
+      </sc-if>
 
       <div style="margin-top:clamp(40px,5vw,56px);background:#E1EFF8;border-radius:16px;padding:clamp(26px,4vw,40px)">
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(22px,3vw,28px);margin:0 0 10px;color:#011D3E">Monthly general meeting</h2>
@@ -67,7 +78,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { events: [] };
+  state = { events: [], eventsReady: false };
 
   componentDidMount() {
     import('./assets/events-data.js').then(async (mod) => {
@@ -79,12 +90,18 @@ class Component extends DCLogic {
           const when = e.end ? mod.fmtTime(e.start) + ' to ' + mod.fmtTime(e.end) : mod.fmtTime(e.start);
           return { mon: f.mon, day: f.day, dow, title: e.title, when, where: e.where, body: e.type === 'meeting' ? 'Open to all. Hear updates and connect with neighbors.' : (e.details || 'Volunteer with LD 48.'), cta: e.cta || 'Details', rsvp: e.href || '#' };
         }),
+        eventsReady: true,
       });
-    });
+    }).catch(() => this.setState({ eventsReady: true }));
   }
 
   renderVals() {
-    return { events: this.state.events };
+    return {
+      events: this.state.events,
+      eventsLoading: !this.state.eventsReady,
+      hasEvents: this.state.events.length > 0,
+      noEvents: this.state.eventsReady && this.state.events.length === 0,
+    };
   }
 }
 </script>
